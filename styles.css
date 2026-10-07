@@ -87,7 +87,6 @@ section { padding: 128px 0; }
 .peek { position: fixed; top: 0; left: 0; z-index: 10; width: 300px; aspect-ratio: 4 / 5; border-radius: var(--r); overflow: hidden; pointer-events: none; opacity: 0; scale: .9; transition: opacity .25s, scale .35s var(--ease); }
 .peek.on { opacity: 1; scale: 1; }
 .peek img { width: 100%; height: 100%; object-fit: cover; }
-.treat-note { margin-top: 20px; color: var(--muted); font-size: 14px; }
 
 /* ---------- Antes e depois ---------- */
 .ba { background: var(--paper); }
@@ -130,12 +129,18 @@ section { padding: 128px 0; }
 .link-arrow { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; text-decoration: none; border-bottom: 1.5px solid currentColor; padding-bottom: 2px; }
 .link-arrow:hover { color: var(--accent); }
 
-/* ---------- Depoimento ---------- */
-.quote { background: var(--accent); color: var(--accent-ink); }
-.quote blockquote { font-family: var(--display); font-stretch: 108%; font-weight: 700; font-size: clamp(32px, 4.4vw, 62px); letter-spacing: -.03em; line-height: 1.1; max-width: 20ch; }
-.quote footer { margin-top: 40px; display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; font-size: 17px; }
-.quote footer span { opacity: .8; }
-.quote .note { font-size: 13px; opacity: .7; }
+/* ---------- Convênios e pagamento ---------- */
+.pay { background: var(--accent); color: var(--accent-ink); }
+.pay-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
+.pay h2 { max-width: 10ch; }
+.plans { list-style: none; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgb(255 255 255 / .35); }
+.plans li { font-family: var(--display); font-stretch: 108%; font-weight: 700; font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -.02em; padding: 20px 0; border-bottom: 1px solid rgb(255 255 255 / .35); }
+.pay-ways { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+.pay-ways p { font-size: 15px; opacity: .9; line-height: 1.4; }
+.pay-ways b { display: block; font-family: var(--display); font-stretch: 112%; font-size: 30px; font-weight: 800; letter-spacing: -.03em; margin-bottom: 4px; opacity: 1; }
+.pay-ask { margin-top: 44px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; border-bottom: 1.5px solid currentColor; padding-bottom: 2px; }
+.pay-ask:hover i { transform: translateX(4px); }
+.pay-ask i { transition: transform .3s var(--ease); }
 
 /* ---------- Avaliações ---------- */
 .reviews { background: var(--paper); }
@@ -226,7 +231,7 @@ dialog::backdrop { background: rgb(12 14 20 / .55); }
   .treat-row p { grid-column: 1; grid-row: 2; }
   .treat-row .price { grid-column: 2; grid-row: 1 / span 2; }
   .treat-row > i { display: none; }
-  .ba-grid, .letter-grid, .visit-grid { grid-template-columns: 1fr; gap: 40px; }
+  .ba-grid, .letter-grid, .visit-grid, .pay-grid { grid-template-columns: 1fr; gap: 40px; }
   .founder { position: static; max-width: 420px; }
   .team-row { grid-template-columns: repeat(2, 1fr); }
   .peek { display: none; }
@@ -248,6 +253,9 @@ dialog::backdrop { background: rgb(12 14 20 / .55); }
   .letter p { font-size: 19px; }
   .wide-photo { margin-top: 88px; aspect-ratio: 4 / 3; }
   .team-row { gap: 20px 12px; }
+  .pay-ways { grid-template-columns: 1fr; gap: 18px; }
+  .plans { grid-template-columns: 1fr; }
+  .plans li { padding: 14px 0; font-size: 24px; }
   .review-track { grid-auto-columns: 86%; gap: 12px; }
   .reviews-nav { display: none; }
   .visit .ctas .btn { flex: 1 1 100%; }
