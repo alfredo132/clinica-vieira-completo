@@ -56,21 +56,13 @@
   </section>
 
   <section class="ba" id="resultados">
-    <div class="wrap ba-grid">
-      <div>
+    <div class="wrap">
+      <div class="ba-head">
         <h2 class="rv">Arraste e compare.</h2>
-        <p class="lead rv" style="--d:1">Clareamento de uma paciente, do primeiro dia ao resultado final.</p>
+        <p class="lead rv" style="--d:1">Três sorrisos, antes e depois do clareamento.</p>
       </div>
-      <div class="rv" style="--d:1">
-        <div class="compare" id="compare">
-          <img src="https://images.unsplash.com/photo-1677026010083-78ec7f1b84ed?w=1400&amp;h=1050&amp;fit=crop&amp;crop=focalpoint&amp;fp-x=.7&amp;fp-y=.46&amp;fp-z=1.5&amp;q=80" alt="Sorriso depois do clareamento" loading="lazy">
-          <img class="before" src="https://images.unsplash.com/photo-1677026010083-78ec7f1b84ed?w=1400&amp;h=1050&amp;fit=crop&amp;crop=focalpoint&amp;fp-x=.7&amp;fp-y=.46&amp;fp-z=1.5&amp;q=80" alt="" aria-hidden="true" loading="lazy">
-          <input type="range" min="0" max="100" value="58" aria-label="Comparar antes e depois do clareamento">
-          <div class="handle"><i class="ph-bold ph-arrows-left-right"></i></div>
-          <span class="tag l">Antes</span><span class="tag r">Depois</span>
-        </div>
-        <p class="ba-note">Simulação ilustrativa.</p>
-      </div>
+      <div class="ba-cases" id="ba-cases"></div>
+      <p class="ba-note">Simulações ilustrativas. No site da clínica, entram fotos reais de pacientes, com autorização de cada um.</p>
     </div>
   </section>
 
@@ -297,16 +289,41 @@
   new IntersectionObserver(([e]) => { galleryVisible = e.isIntersecting; play(); }, { threshold: .3 }).observe($("#gallery"));
   show(0);
 
-  /* ---------- Antes e depois ---------- */
-  const compare = $("#compare"), range = compare.querySelector("input");
-  const setPos = v => { v = Math.max(0, Math.min(100, v)); compare.style.setProperty("--pos", v + "%"); range.value = v; };
-  range.addEventListener("input", () => setPos(+range.value));
-  let dragging = false;
-  const fromPointer = e => { const r = compare.getBoundingClientRect(); setPos((e.clientX - r.left) / r.width * 100); };
-  compare.addEventListener("pointerdown", e => { dragging = true; compare.setPointerCapture(e.pointerId); fromPointer(e); });
-  compare.addEventListener("pointermove", e => dragging && fromPointer(e));
-  compare.addEventListener("pointerup", () => dragging = false);
-  compare.addEventListener("pointercancel", () => dragging = false);
+  /* ---------- Antes e depois ----------
+    Cada caso usa a mesma foto nos dois lados. No "antes", uma camada amarelada cobre só os dentes
+    (tx/ty = centro dos dentes, tw/th = largura e altura, em % da foto).
+    Para casos reais, troque por { after: "antes-depois/caso1-depois.jpg", before: "antes-depois/caso1-antes.jpg" }.
+  */
+  const CASES = [
+    { id: "1655807946138-811bb2340d34", tx: 50, ty: 50, tw: 90, th: 34 },
+    { id: "1663182234283-28941e7612da", tx: 52, ty: 50, tw: 74, th: 17 },
+    { id: "1663182245833-7dd667277043", tx: 50, ty: 48, tw: 96, th: 30 },
+  ];
+  $("#ba-cases").innerHTML = CASES.map((c, i) => {
+    const after = c.after || IMG(c.id, "w=800&h=800&fit=crop");
+    const before = c.before
+      ? `<img src="${c.before}" alt="" loading="lazy">`
+      : `<img src="${after}" alt="" loading="lazy"><span class="stain" style="left:${c.tx - c.tw / 2}%;top:${c.ty - c.th / 2}%;width:${c.tw}%;height:${c.th}%"></span>`;
+    return `
+    <div class="compare rv" style="--d:${i}">
+      <img src="${after}" alt="Sorriso depois do clareamento" loading="lazy">
+      <div class="before" aria-hidden="true">${before}</div>
+      <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois, caso ${i + 1}">
+      <div class="handle"><i class="ph-bold ph-arrows-left-right"></i></div>
+      <span class="tag l">Antes</span><span class="tag r">Depois</span>
+    </div>`;
+  }).join("");
+  $$(".compare").forEach(compare => {
+    const range = compare.querySelector("input");
+    const setPos = v => { v = Math.max(0, Math.min(100, v)); compare.style.setProperty("--pos", v + "%"); range.value = v; };
+    range.addEventListener("input", () => setPos(+range.value));
+    let dragging = false;
+    const fromPointer = e => { const r = compare.getBoundingClientRect(); setPos((e.clientX - r.left) / r.width * 100); };
+    compare.addEventListener("pointerdown", e => { dragging = true; compare.setPointerCapture(e.pointerId); fromPointer(e); });
+    compare.addEventListener("pointermove", e => dragging && fromPointer(e));
+    compare.addEventListener("pointerup", () => dragging = false);
+    compare.addEventListener("pointercancel", () => dragging = false);
+  });
 
   /* ---------- Agendamento ---------- */
   const OPTIONS = {
