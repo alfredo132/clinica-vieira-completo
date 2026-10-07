@@ -144,8 +144,6 @@ section { padding: 128px 0; }
 /* ---------- Avaliações ---------- */
 .reviews { background: var(--paper); }
 .reviews-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 40px; flex-wrap: wrap; }
-.reviews-score { display: flex; align-items: baseline; gap: 12px; margin-top: 18px; color: var(--ink-2); }
-.reviews-score b { font-family: var(--display); font-stretch: 112%; font-size: 32px; font-weight: 800; letter-spacing: -.03em; color: var(--ink); }
 .stars { color: #f4b400; letter-spacing: 2px; font-size: 17px; }
 .reviews-nav { display: flex; gap: 8px; }
 .reviews-nav .x { width: 48px; height: 48px; font-size: 20px; }

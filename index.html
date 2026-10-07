@@ -18,7 +18,7 @@
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="#topo"><b>Clínica Vieira</b><span>Odontologia, desde 2006</span></a>
+    <a class="brand" href="#topo"><b>Clínica Vieira</b><span>Odontologia</span></a>
     <ul class="nav-links">
       <li><a href="#tratamentos">Tratamentos</a></li>
       <li><a href="#a-clinica">A clínica</a></li>
@@ -35,7 +35,7 @@
     <div class="wrap hero-text">
       <div>
         <h1 class="rv">Dentista de família na Savassi desde 2006.</h1>
-        <p class="rv" style="--d:1">Avós, pais e netos atendidos na mesma clínica há quase vinte anos. A primeira avaliação não tem custo.</p>
+        <p class="rv" style="--d:1">Do primeiro dente de leite ao implante, a família inteira se trata aqui. A primeira avaliação é gratuita.</p>
         <div class="ctas rv" style="--d:2" id="hero-ctas">
           <button class="btn btn-main" data-book><i class="ph-bold ph-whatsapp-logo"></i>Marcar avaliação</button>
           <a class="btn btn-ghost" href="tel:+553130000000"><i class="ph ph-phone"></i>(31) 3000-0000</a>
@@ -49,7 +49,7 @@
     <div class="wrap">
       <div class="treat-head">
         <h2 class="rv">O que a gente faz.</h2>
-        <p class="lead rv" style="--d:1">Preço inicial de cada tratamento, para você chegar sabendo. O valor final sai na avaliação, por escrito.</p>
+        <p class="lead rv" style="--d:1">Preço inicial de cada tratamento, para você chegar sabendo quanto vai investir.</p>
       </div>
       <ul class="treat-list" id="treat-list"></ul>
     </div>
@@ -80,12 +80,12 @@
       <h2 class="about-title rv">Uma clínica pequena, de propósito.</h2>
       <div class="promises">
         <div class="rv"><b>Preço fechado</b><p>Orçamento por escrito antes de começar.</p></div>
-        <div class="rv" style="--d:1"><b>Sem empurrar</b><p>Só o tratamento que você precisa.</p></div>
+        <div class="rv" style="--d:1"><b>Hora marcada</b><p>A consulta começa no horário combinado.</p></div>
         <div class="rv" style="--d:2"><b>Mesmo dentista</b><p>Do primeiro dia até o fim do tratamento.</p></div>
       </div>
       <div class="signed rv">
         <img src="https://images.unsplash.com/photo-1644335326474-544fbcf8855f?w=160&amp;h=160&amp;fit=crop&amp;crop=faces&amp;q=80" alt="Dra. Marina Vieira">
-        <p><b>Dra. Marina Vieira</b>, fundadora. Atendendo na Savassi desde 2006.</p>
+        <p><b>Dra. Marina Vieira</b>, fundadora e cirurgiã-dentista.</p>
       </div>
       <div class="wide-photo rv">
         <img src="https://images.unsplash.com/photo-1765371514615-495c20659e3a?w=2000&q=80" alt="Consultório com móveis de madeira clara e luz indireta" loading="lazy">
@@ -114,11 +114,11 @@
           <li>OdontoPrev</li>
         </ul>
         <div class="pay-ways rv" style="--d:2">
-          <p><b>Até 12x</b>sem juros no cartão</p>
+          <p><b>Até 12x</b>no cartão, com juro zero</p>
           <p><b>5% off</b>no Pix, à vista</p>
-          <p><b>Por escrito</b>o orçamento, antes de começar</p>
+          <p><b>10% família</b>a partir do segundo familiar em tratamento</p>
         </div>
-        <button class="pay-ask rv" style="--d:3" data-book>Não achou o seu convênio? Pergunte no WhatsApp <i class="ph ph-arrow-right"></i></button>
+        <button class="pay-ask rv" style="--d:3" data-book>Tem outro convênio? Pergunte no WhatsApp <i class="ph ph-arrow-right"></i></button>
       </div>
     </div>
   </section>
@@ -128,7 +128,6 @@
       <div class="reviews-head">
         <div class="rv">
           <h2>O que falam no Google.</h2>
-          <p class="reviews-score"><b>4,9</b><span class="stars" aria-label="5 estrelas">★★★★★</span><span>712 avaliações</span></p>
         </div>
         <div class="reviews-nav rv" style="--d:1">
           <button class="x" data-scroll="-1" aria-label="Avaliações anteriores"><i class="ph ph-arrow-left"></i></button>
@@ -210,11 +209,11 @@
   /* ---------- Tratamentos ---------- */
   const TREATMENTS = [
     { name: "Implantes", desc: "Do planejamento à coroa, tudo feito aqui dentro.", price: "R$ 2.900", per: "por dente", img: "1567516364473-233c4b6fcfbe" },
-    { name: "Aparelho e alinhadores", desc: "Fixo ou transparente. Você escolhe depois de ver a simulação.", price: "R$ 180", per: "por mês", img: "1544825471-302679fe3509" },
-    { name: "Clareamento", desc: "No consultório e em casa, com moldeira sob medida.", price: "R$ 690", per: "tratamento completo", img: "1594756154841-ac5d160dbf46" },
+    { name: "Aparelho e alinhadores", desc: "Fixo ou transparente, com revisão todo mês.", price: "R$ 180", per: "por mês", img: "1544825471-302679fe3509" },
+    { name: "Clareamento", desc: "Tons mais claros e uniformes, com controle de sensibilidade.", price: "R$ 690", per: "tratamento completo", img: "1594756154841-ac5d160dbf46" },
     { name: "Lentes e facetas", desc: "Porcelana fina, no tom e no formato dos seus dentes.", price: "R$ 1.400", per: "por dente", img: "1677026010083-78ec7f1b84ed" },
-    { name: "Odontopediatria", desc: "A primeira consulta é só para a criança conhecer a cadeira.", price: "R$ 160", per: "consulta", img: "1708687045000-9dbb586ad1e2" },
-    { name: "Limpeza e check-up", desc: "Uma hora, com raio-x na hora se precisar.", price: "R$ 160", per: "consulta", img: "1662837775286-7e6258c7c595" },
+    { name: "Odontopediatria", desc: "A primeira visita é para a criança conhecer a cadeira e o dentista.", price: "R$ 160", per: "consulta", img: "1708687045000-9dbb586ad1e2" },
+    { name: "Limpeza e check-up", desc: "Consulta de uma hora, com raio-x feito na própria clínica.", price: "R$ 160", per: "consulta", img: "1662837775286-7e6258c7c595" },
   ];
   $("#treat-list").innerHTML = TREATMENTS.map((t, i) => `
     <li class="rv" style="--d:${i % 3}">
@@ -258,11 +257,11 @@
     e troque o item por { img: "avaliacoes/print-1.png", name: "Nome de quem avaliou" }.
   */
   const REVIEWS = [
-    { name: "Fernanda Moreira", when: "há 1 semana", text: "Fiz clareamento com a Dra. Júlia e amei o resultado. Ela explicou tudo antes, sem enrolação, e o preço foi exatamente o do orçamento." },
-    { name: "Paulo Henrique", when: "há 3 semanas", text: "Coloquei dois implantes com a Dra. Marina. Tinha pavor de dentista e saí tranquilo. Atendimento no horário e recepção muito educada." },
+    { name: "Fernanda Moreira", when: "há 1 semana", text: "Fiz clareamento com a Dra. Júlia e amei o resultado. Meus dentes estavam amarelados de tanto café e hoje adoro sair nas fotos." },
+    { name: "Paulo Henrique", when: "há 3 semanas", text: "Coloquei dois implantes com a Dra. Marina. Tinha pavor de dentista e saí tranquilo. Recepção muito educada." },
     { name: "Luciana Araújo", when: "há 1 mês", text: "Meu filho de 4 anos chorava só de ouvir falar em dentista. Com o Dr. Rafael ele foi brincando e agora pergunta quando volta kkkk" },
-    { name: "Gustavo Ribeiro", when: "há 2 meses", text: "Tô usando alinhador com o Dr. Caio. Ele mostrou a simulação no computador antes de fechar, ajudou muito a decidir." },
-    { name: "Marta Souza", when: "há 2 meses", text: "Clínica limpinha, estacionamento no prédio e marcam rapidinho pelo WhatsApp. Recomendo demais." },
+    { name: "Gustavo Ribeiro", when: "há 2 meses", text: "Tô usando alinhador com o Dr. Caio. Em seis meses já deu pra ver diferença no sorriso." },
+    { name: "Marta Souza", when: "há 2 meses", text: "Clínica limpinha e cheirosa, café na recepção e o pessoal lembra do seu nome. Recomendo demais." },
     { name: "Thiago Bastos", when: "há 4 meses", text: "Quebrei um dente num sábado de manhã e me encaixaram no mesmo dia. Resolveram na hora e ficou perfeito." },
   ];
   const AVATAR = ["#2443d0", "#c2410c", "#0f766e", "#7c3aed", "#b45309", "#be123c"];
