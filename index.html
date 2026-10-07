@@ -35,7 +35,7 @@
     <div class="wrap hero-text">
       <div>
         <h1 class="rv">Dentista de família na Savassi desde 2006.</h1>
-        <p class="rv" style="--d:1">Do primeiro dente de leite ao implante, a família inteira se trata aqui. A primeira avaliação é gratuita.</p>
+        <p class="rv" style="--d:1">Do primeiro dente de leite ao implante, a família inteira se trata aqui.</p>
         <div class="ctas rv" style="--d:2" id="hero-ctas">
           <button class="btn btn-main" data-book><i class="ph-bold ph-whatsapp-logo"></i>Marcar avaliação</button>
           <a class="btn btn-ghost" href="tel:+553130000000"><i class="ph ph-phone"></i>(31) 3000-0000</a>
@@ -49,18 +49,23 @@
     <div class="wrap">
       <div class="treat-head">
         <h2 class="rv">O que a gente faz.</h2>
-        <p class="lead rv" style="--d:1">Preço inicial de cada tratamento, para você chegar sabendo quanto vai investir.</p>
+        <p class="lead rv" style="--d:1">Quanto tempo cada tratamento leva e quantas vezes você vem à clínica.</p>
       </div>
-      <ul class="treat-list" id="treat-list"></ul>
+      <div class="treat-layout">
+        <ul class="treat-list" id="treat-list"></ul>
+        <div class="treat-visual" aria-hidden="true">
+          <div class="treat-frames" id="treat-frames"></div>
+          <div class="treat-progress" id="treat-progress"></div>
+        </div>
+      </div>
     </div>
   </section>
-  <div class="peek" id="peek" aria-hidden="true"><img alt=""></div>
 
   <section class="ba" id="resultados">
     <div class="wrap ba-grid">
       <div>
-        <h2 class="rv">Duas semanas de clareamento.</h2>
-        <p class="lead rv" style="--d:1">Uma sessão no consultório e o restante em casa, com a moldeira feita para a sua boca. Arraste para comparar.</p>
+        <h2 class="rv">Arraste e compare.</h2>
+        <p class="lead rv" style="--d:1">Clareamento de uma paciente, do primeiro dia ao resultado final.</p>
       </div>
       <div class="rv" style="--d:1">
         <div class="compare" id="compare">
@@ -79,7 +84,7 @@
     <div class="wrap">
       <h2 class="about-title rv">Uma clínica pequena, de propósito.</h2>
       <div class="promises">
-        <div class="rv"><b>Preço fechado</b><p>Orçamento por escrito antes de começar.</p></div>
+        <div class="rv"><b>Tudo por escrito</b><p>Você leva para casa o plano com cada etapa do tratamento.</p></div>
         <div class="rv" style="--d:1"><b>Hora marcada</b><p>A consulta começa no horário combinado.</p></div>
         <div class="rv" style="--d:2"><b>Mesmo dentista</b><p>Do primeiro dia até o fim do tratamento.</p></div>
       </div>
@@ -113,12 +118,7 @@
           <li>SulAmérica Odonto</li>
           <li>OdontoPrev</li>
         </ul>
-        <div class="pay-ways rv" style="--d:2">
-          <p><b>Até 12x</b>no cartão, com juro zero</p>
-          <p><b>5% off</b>no Pix, à vista</p>
-          <p><b>10% família</b>a partir do segundo familiar em tratamento</p>
-        </div>
-        <button class="pay-ask rv" style="--d:3" data-book>Tem outro convênio? Pergunte no WhatsApp <i class="ph ph-arrow-right"></i></button>
+        <button class="pay-ask rv" style="--d:2" data-book>Tem outro convênio? Pergunte no WhatsApp <i class="ph ph-arrow-right"></i></button>
       </div>
     </div>
   </section>
@@ -168,7 +168,7 @@
 <footer class="site">
   <div class="wrap">
     <span>Clínica Vieira Odontologia. Responsável técnica: Dra. Marina Vieira, CRO-MG 00000.</span>
-    <span>Clínica, profissionais, endereço, avaliações e preços fictícios para demonstração.</span>
+    <span>Clínica, profissionais, endereço e avaliações fictícios para demonstração.</span>
   </div>
 </footer>
 
@@ -208,36 +208,36 @@
 
   /* ---------- Tratamentos ---------- */
   const TREATMENTS = [
-    { name: "Implantes", desc: "Do planejamento à coroa, tudo feito aqui dentro.", price: "R$ 2.900", per: "por dente", img: "1567516364473-233c4b6fcfbe" },
-    { name: "Aparelho e alinhadores", desc: "Fixo ou transparente, com revisão todo mês.", price: "R$ 180", per: "por mês", img: "1544825471-302679fe3509" },
-    { name: "Clareamento", desc: "Tons mais claros e uniformes, com controle de sensibilidade.", price: "R$ 690", per: "tratamento completo", img: "1594756154841-ac5d160dbf46" },
-    { name: "Lentes e facetas", desc: "Porcelana fina, no tom e no formato dos seus dentes.", price: "R$ 1.400", per: "por dente", img: "1677026010083-78ec7f1b84ed" },
-    { name: "Odontopediatria", desc: "A primeira visita é para a criança conhecer a cadeira e o dentista.", price: "R$ 160", per: "consulta", img: "1708687045000-9dbb586ad1e2" },
-    { name: "Limpeza e check-up", desc: "Consulta de uma hora, com raio-x feito na própria clínica.", price: "R$ 160", per: "consulta", img: "1662837775286-7e6258c7c595" },
+    { name: "Implantes", desc: "Do planejamento à coroa, tudo feito aqui dentro.", visits: "3 a 4 consultas", time: "3 a 6 meses", img: "1567516364473-233c4b6fcfbe" },
+    { name: "Aparelho e alinhadores", desc: "Fixo ou transparente, com revisão todo mês.", visits: "1 consulta por mês", time: "12 a 24 meses", img: "1544825471-302679fe3509" },
+    { name: "Clareamento", desc: "Tons mais claros e uniformes, com controle de sensibilidade.", visits: "2 consultas", time: "cerca de 2 semanas", img: "1594756154841-ac5d160dbf46" },
+    { name: "Lentes e facetas", desc: "Porcelana fina, no tom e no formato dos seus dentes.", visits: "3 consultas", time: "3 a 4 semanas", img: "1650803075918-efbee311735d" },
+    { name: "Odontopediatria", desc: "A primeira visita é para a criança conhecer a cadeira e o dentista.", visits: "a partir de 1 ano", time: "retorno a cada 6 meses", img: "1708687045000-9dbb586ad1e2" },
+    { name: "Limpeza e check-up", desc: "Raio-x feito na própria clínica e limpeza completa.", visits: "1 consulta", time: "cerca de 1 hora", img: "1662837775286-7e6258c7c595" },
   ];
   $("#treat-list").innerHTML = TREATMENTS.map((t, i) => `
-    <li class="rv" style="--d:${i % 3}">
-      <button class="treat-row" data-book="${t.name}" data-peek="${t.img}">
+    <li>
+      <button class="treat-row" data-book="${t.name}" data-i="${i}">
+        <img class="treat-thumb" src="${IMG(t.img, "w=900&h=560&fit=crop")}" alt="" loading="lazy">
         <h3>${t.name}</h3>
         <p>${t.desc}</p>
-        <span class="price">a partir de<b>${t.price}</b>${t.per}</span>
-        <i class="ph ph-arrow-right"></i>
+        <span class="treat-meta"><b>${t.visits}</b>${t.time}</span>
+        <span class="treat-cta">Marcar avaliação <i class="ph ph-arrow-right"></i></span>
       </button>
     </li>`).join("");
+  $("#treat-frames").innerHTML = TREATMENTS.map((t, i) => `<img src="${IMG(t.img, "w=1000&h=1250&fit=crop")}" alt="" ${i ? 'loading="lazy"' : ""} data-i="${i}">`).join("");
+  $("#treat-progress").innerHTML = TREATMENTS.map(() => "<span></span>").join("");
 
-  // No computador, a foto do tratamento acompanha o mouse enquanto ele passa pela lista
-  const peek = $("#peek"), peekImg = peek.querySelector("img");
-  if (matchMedia("(hover: hover) and (min-width: 1025px)").matches && !REDUCE) {
-    $("#treat-list").addEventListener("pointermove", e => {
-      const row = e.target.closest(".treat-row");
-      if (!row) return peek.classList.remove("on");
-      const src = IMG(row.dataset.peek, "w=600&h=750&fit=crop");
-      if (peekImg.src !== src) peekImg.src = src;
-      peek.style.translate = `${e.clientX + 28}px ${e.clientY - 180}px`;
-      peek.classList.add("on");
-    });
-    $("#treat-list").addEventListener("pointerleave", () => peek.classList.remove("on"));
+  // O tratamento que passa pelo meio da tela fica em destaque, e a foto à direita acompanha
+  const rows = $$(".treat-row"), frames = $$("#treat-frames img"), ticks = $$("#treat-progress span");
+  function activate(i) {
+    rows.forEach((r, k) => r.classList.toggle("is-active", k === i));
+    frames.forEach((f, k) => f.classList.toggle("is-on", k === i));
+    ticks.forEach((t, k) => t.classList.toggle("is-on", k <= i));
   }
+  const rowIO = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && activate(+e.target.dataset.i)), { rootMargin: "-45% 0px -45% 0px" });
+  rows.forEach(r => rowIO.observe(r));
+  activate(0);
 
   /* ---------- Equipe ---------- */
   const TEAM = [
@@ -367,7 +367,6 @@
     const b = e.target.closest("[data-book]"); if (!b) return;
     if (b.dataset.book) pick.treat = b.dataset.book;
     renderBook();
-    peek.classList.remove("on");
     book.showModal();
   });
   $("[data-close]").addEventListener("click", () => book.close());
