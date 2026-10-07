@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lume Odontologia | Dentista sem susto</title>
-<meta name="description" content="Clínica odontológica com avaliação sem compromisso, simulador de tratamento e agendamento direto pelo WhatsApp.">
-<meta name="theme-color" content="#f3f5f4">
+<title>Clínica Vieira | Dentista de família na Savassi</title>
+<meta name="description" content="Clínica odontológica de família na Savassi, em Belo Horizonte, desde 2006. Implantes, aparelho, clareamento, lentes e odontopediatria. Agende pelo WhatsApp.">
+<meta name="theme-color" content="#f5f5f3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="https://images.unsplash.com/photo-1777331903190-341a3dd0441b?w=1400&q=80">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1662850886700-4ec19bd30d11?w=2000&q=80">
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -18,222 +18,137 @@
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="#topo" aria-label="Lume Odontologia, início">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="10" fill="var(--accent)"/><path d="M11 8v16h10" stroke="var(--accent-ink)" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Lume
-    </a>
+    <a class="brand" href="#topo"><b>Clínica Vieira</b><span>Odontologia, desde 2006</span></a>
     <ul class="nav-links">
-      <li><a href="#simulador">Simulador</a></li>
-      <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#tratamentos">Tratamentos</a></li>
+      <li><a href="#a-clinica">A clínica</a></li>
       <li><a href="equipe.html">Equipe</a></li>
-      <li><a href="#plano">Plano</a></li>
-      <li><a href="#contato">Contato</a></li>
+      <li><a href="#visite">Como chegar</a></li>
     </ul>
-    <button class="btn btn-main" data-book><i class="ph-bold ph-whatsapp-logo"></i>Agendar avaliação</button>
+    <button class="btn btn-main" data-book>Marcar avaliação</button>
   </div>
 </header>
 
 <main id="topo">
-  <section class="hero">
-    <div class="wrap hero-grid">
+  <section class="hero" style="padding:0">
+    <div class="hero-img"><img src="https://images.unsplash.com/photo-1662850886700-4ec19bd30d11?w=2000&q=80" alt="Mulher de cabelo cacheado sorrindo, com a mão na cabeça" fetchpriority="high"></div>
+    <div class="wrap hero-text">
       <div>
-        <h1 class="rv">Dentista sem susto, do jeito que <em>devia ser.</em></h1>
-        <p class="lead rv" style="--d:1">Avaliação sem compromisso, tudo explicado antes de começar e agendamento direto pelo WhatsApp.</p>
+        <h1 class="rv">Dentista de família na Savassi desde 2006.</h1>
+        <p class="rv" style="--d:1">Avós, pais e netos atendidos na mesma clínica há quase vinte anos. A primeira avaliação não tem custo.</p>
         <div class="ctas rv" style="--d:2" id="hero-ctas">
-          <button class="btn btn-main" data-book><i class="ph-bold ph-whatsapp-logo"></i>Agendar avaliação</button>
-          <a class="btn btn-line" href="#simulador"><i class="ph ph-magic-wand"></i>Simular tratamento</a>
+          <button class="btn btn-main" data-book><i class="ph-bold ph-whatsapp-logo"></i>Marcar avaliação</button>
+          <a class="btn btn-ghost" href="tel:+553130000000"><i class="ph ph-phone"></i>(31) 3000-0000</a>
         </div>
       </div>
-      <div class="hero-photo rv" style="--d:1">
-        <img src="https://images.unsplash.com/photo-1777331903190-341a3dd0441b?w=1400&q=80" alt="Dentista conversando com a paciente antes do atendimento" fetchpriority="high">
-      </div>
+      <div class="google rv" style="--d:3"><b>4,9</b><span>no Google, com 712 avaliações</span></div>
     </div>
   </section>
 
-  <div class="plans">
+  <section id="tratamentos">
     <div class="wrap">
-      <div class="rating">
-        <b>4,9</b>
-        <div><span class="stars" aria-hidden="true">★★★★★</span><span>712 avaliações no Google</span></div>
+      <div class="treat-head">
+        <h2 class="rv">O que a gente faz.</h2>
+        <p class="lead rv" style="--d:1">Preço inicial de cada tratamento, para você chegar sabendo. O valor final sai na avaliação, por escrito.</p>
       </div>
-      <div class="plans-list">
-        <strong>Convênios aceitos</strong>
-        <ul id="plans-list"></ul>
-      </div>
-    </div>
-  </div>
-
-  <section id="simulador">
-    <div class="wrap">
-      <div class="sim-head rv">
-        <h2>O que está te incomodando?</h2>
-        <p class="lead">Toque na opção que mais parece com o seu caso e veja o tratamento indicado, quanto tempo leva e o valor inicial.</p>
-      </div>
-      <div class="sim-grid">
-        <div class="concerns" id="concerns"></div>
-        <div class="result rv" id="result" aria-live="polite">
-          <div class="result-empty">
-            <i class="ph-duotone ph-hand-tap"></i>
-            Escolha uma opção para ver o tratamento indicado e o valor inicial.
-          </div>
-        </div>
-      </div>
+      <ul class="treat-list" id="treat-list"></ul>
+      <p class="treat-note">Parcelamos em até 12x no cartão. Aceitamos Amil Dental, Bradesco Dental, SulAmérica Odonto e OdontoPrev.</p>
     </div>
   </section>
+  <div class="peek" id="peek" aria-hidden="true"><img alt=""></div>
 
   <section class="ba" id="resultados">
-    <div class="wrap">
-      <div class="ba-head rv">
-        <h2>Arraste e veja a diferença.</h2>
-        <p class="lead">Clareamento em consultório com acabamento em casa. Resultado em cerca de duas semanas.</p>
-      </div>
-      <div class="compare rv" id="compare">
-        <img src="https://images.unsplash.com/photo-1677026010083-78ec7f1b84ed?w=1600&amp;h=800&amp;fit=crop&amp;crop=focalpoint&amp;fp-x=.7&amp;fp-y=.46&amp;fp-z=1.35&amp;q=80" alt="Sorriso depois do clareamento" loading="lazy">
-        <img class="before" src="https://images.unsplash.com/photo-1677026010083-78ec7f1b84ed?w=1600&amp;h=800&amp;fit=crop&amp;crop=focalpoint&amp;fp-x=.7&amp;fp-y=.46&amp;fp-z=1.35&amp;q=80" alt="" aria-hidden="true" loading="lazy">
-        <input type="range" min="0" max="100" value="58" aria-label="Comparar antes e depois do clareamento">
-        <div class="handle"><i class="ph-bold ph-arrows-left-right"></i></div>
-      </div>
-      <div class="ba-legend"><span>Antes</span><span>Simulação ilustrativa</span><span>Depois</span></div>
-    </div>
-  </section>
-
-  <section class="calm" id="sem-medo">
-    <div class="wrap calm-grid">
-      <div class="calm-photo rv">
-        <img src="https://images.unsplash.com/photo-1776886099265-6366478b341b?w=1200&q=80" alt="Sala de espera clara, com cadeiras brancas e plantas" loading="lazy">
-      </div>
+    <div class="wrap ba-grid">
       <div>
-        <h2 class="rv">Tem medo de dentista? A gente entende.</h2>
-        <p class="lead rv" style="--d:1">Muita gente adia a consulta por anos por causa disso. Aqui o atendimento foi pensado para quem chega com o coração na mão.</p>
-        <ul class="calm-list">
-          <li class="rv" style="--d:2"><i class="ph ph-chat-circle-text"></i><div><h3>Nada acontece sem explicação</h3><p>Antes de cada etapa, você sabe o que vai ser feito e quanto tempo leva.</p></div></li>
-          <li class="rv" style="--d:3"><i class="ph ph-hand-palm"></i><div><h3>Você pode pedir pausa</h3><p>Levantou a mão, a gente para. Sem pressa e sem julgamento.</p></div></li>
-          <li class="rv" style="--d:4"><i class="ph ph-drop"></i><div><h3>Anestesia sem a picada</h3><p>Gel anestésico antes da agulha e sedação leve para os casos de mais ansiedade.</p></div></li>
-        </ul>
+        <h2 class="rv">Duas semanas de clareamento.</h2>
+        <p class="lead rv" style="--d:1">Uma sessão no consultório e o restante em casa, com a moldeira feita para a sua boca. Arraste para comparar.</p>
+      </div>
+      <div class="rv" style="--d:1">
+        <div class="compare" id="compare">
+          <img src="https://images.unsplash.com/photo-1677026010083-78ec7f1b84ed?w=1400&amp;h=1050&amp;fit=crop&amp;crop=focalpoint&amp;fp-x=.7&amp;fp-y=.46&amp;fp-z=1.5&amp;q=80" alt="Sorriso depois do clareamento" loading="lazy">
+          <img class="before" src="https://images.unsplash.com/photo-1677026010083-78ec7f1b84ed?w=1400&amp;h=1050&amp;fit=crop&amp;crop=focalpoint&amp;fp-x=.7&amp;fp-y=.46&amp;fp-z=1.5&amp;q=80" alt="" aria-hidden="true" loading="lazy">
+          <input type="range" min="0" max="100" value="58" aria-label="Comparar antes e depois do clareamento">
+          <div class="handle"><i class="ph-bold ph-arrows-left-right"></i></div>
+          <span class="tag l">Antes</span><span class="tag r">Depois</span>
+        </div>
+        <p class="ba-note">Simulação ilustrativa.</p>
       </div>
     </div>
   </section>
 
-  <section id="estrutura">
+  <section id="a-clinica">
     <div class="wrap">
-      <div class="gear-head rv">
-        <h2>Tecnologia que deixa a consulta mais leve.</h2>
-        <p class="lead">Menos tempo na cadeira, menos idas à clínica e você vendo tudo o que o dentista vê.</p>
-      </div>
-      <div class="bento">
-        <div class="tile photo rv"><img src="https://images.unsplash.com/photo-1667133295311-e6911e6e22db?w=1200&amp;q=80" alt="Paciente vendo o escaneamento dos dentes na tela, ao lado do dentista" loading="lazy"></div>
-        <div class="tile tint rv" style="--d:1"><i class="ph ph-cube"></i><h3>Scanner 3D sem massinha</h3><p>Molde digital em poucos minutos, sem aquela massa que dá ânsia.</p></div>
-        <div class="tile rv" style="--d:2"><i class="ph ph-scan"></i><h3>Raio-x aqui mesmo</h3><p>Panorâmico na própria clínica. Nada de sair para fazer exame em outro lugar.</p></div>
-        <div class="tile wide rv" style="--d:3"><img src="https://images.unsplash.com/photo-1600170311833-c2cf5280ce49?w=500&amp;q=80" alt="Planejamento digital do sorriso no tablet" loading="lazy"><div><h3>Você vê o sorriso antes de começar</h3><p>Planejamento digital mostra como vai ficar, e você aprova antes do primeiro procedimento.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="equipe" style="padding-top:0">
-    <div class="wrap team-grid">
-      <div class="team-intro rv">
-        <h2>Quem vai cuidar de você.</h2>
-        <p class="lead">Cada especialista atende a sua área. Você sabe o nome de quem está do outro lado da cadeira.</p>
-        <a class="btn btn-line team-more" href="equipe.html"><i class="ph ph-certificate"></i>Formação e diplomas</a>
-      </div>
-      <a class="doc rv" style="--d:1" href="equipe.html#helena">
-        <div class="doc-photo"><img src="https://images.unsplash.com/photo-1683349370055-7eba66a404c6?w=700&amp;q=80" alt="Dra. Helena Moura sorrindo no consultório" loading="lazy"></div>
-        <div><small>Responsável técnica</small><h3>Dra. Helena Moura</h3><p>Reabilitação oral e implantes. CRO-MG 00000</p></div>
-      </a>
-      <a class="doc rv" style="--d:2" href="equipe.html#caio">
-        <div class="doc-photo"><img src="https://images.unsplash.com/photo-1667133295308-9ef24f71952e?w=700&amp;q=80" alt="Dr. Caio Rezende de jaleco no consultório" loading="lazy"></div>
-        <div><small>Ortodontia</small><h3>Dr. Caio Rezende</h3><p>Alinhadores e aparelhos. CRO-MG 00000</p></div>
-      </a>
-      <a class="doc rv" style="--d:3" href="equipe.html#lucas">
-        <div class="doc-photo"><img src="https://images.unsplash.com/photo-1647763283644-578114aba0c2?w=700&amp;q=80" alt="Dr. Lucas Amaral sorrindo de óculos" loading="lazy"></div>
-        <div><small>Estética e clareamento</small><h3>Dr. Lucas Amaral</h3><p>Lentes, facetas e clareamento. CRO-MG 00000</p></div>
-      </a>
-    </div>
-  </section>
-
-  <section class="voices">
-    <div class="wrap">
-      <div class="voices-grid">
-        <figure class="voice big rv">
-          <blockquote>“Fiquei seis anos sem ir ao dentista por medo. Aqui me explicaram tudo antes e eu nem senti a anestesia.”</blockquote>
-          <footer><b>Juliana Paiva</b><span>Paciente desde 2024</span></footer>
+      <div class="letter-grid">
+        <figure class="founder rv">
+          <img src="https://images.unsplash.com/photo-1644335326474-544fbcf8855f?w=900&amp;h=1125&amp;fit=crop&amp;q=80" alt="Dra. Marina Vieira sorrindo" loading="lazy">
+          <figcaption><b>Dra. Marina Vieira</b>Fundadora, implantes e reabilitação oral</figcaption>
         </figure>
-        <div class="voices-side">
-          <figure class="voice rv" style="--d:1">
-            <blockquote>“Marquei pelo WhatsApp em dois minutos e já sabia o valor antes de sair de casa.”</blockquote>
-            <footer><b>Rodrigo Siqueira</b><span>Implante</span></footer>
-          </figure>
-          <figure class="voice rv" style="--d:2">
-            <blockquote>“Meu filho de 7 anos saiu pedindo para voltar. Nunca imaginei ouvir isso.”</blockquote>
-            <footer><b>Camila Bastos</b><span>Mãe do Theo</span></footer>
-          </figure>
+        <div class="letter">
+          <h2 class="rv">Uma clínica pequena, de propósito.</h2>
+          <p class="rv">Abri a clínica em 2006, numa sala de 30 metros na Fernandes Tourinho. Hoje somos quatro dentistas, mas o jeito de atender não mudou.</p>
+          <p class="rv"><strong>Você sabe o preço antes de começar.</strong> O orçamento vai por escrito e não aparece cobrança no meio do caminho.</p>
+          <p class="rv"><strong>Ninguém empurra tratamento.</strong> Se dá para resolver com uma restauração, a gente não indica lente.</p>
+          <p class="rv"><strong>Quem te atende na primeira consulta continua com você.</strong> Sem rodízio de dentista a cada visita.</p>
+          <p class="signature rv">Marina Vieira</p>
         </div>
       </div>
-      <p class="voices-note">Depoimentos e avaliações fictícios para demonstração.</p>
+      <div class="wide-photo rv">
+        <img src="https://images.unsplash.com/photo-1765371514615-495c20659e3a?w=2000&q=80" alt="Consultório com móveis de madeira clara e luz indireta" loading="lazy">
+      </div>
     </div>
   </section>
 
-  <section id="plano" style="padding-top:0">
+  <section class="team">
     <div class="wrap">
-      <div class="plan-box rv">
-        <div class="plan-main">
-          <h2>Plano Lume</h2>
-          <p class="lead">Para quem não tem convênio e quer manter os dentes em dia sem susto no orçamento.</p>
-          <div class="plan-price"><b>R$ 39</b><span>por mês, por pessoa</span></div>
-          <ul>
-            <li><i class="ph-bold ph-check"></i>Duas consultas com limpeza por ano</li>
-            <li><i class="ph-bold ph-check"></i>Raio-x e avaliação sempre que precisar</li>
-            <li><i class="ph-bold ph-check"></i>15% de desconto em qualquer tratamento</li>
-            <li><i class="ph-bold ph-check"></i>Sem carência e sem fidelidade</li>
-          </ul>
-          <button class="btn btn-main" data-book="Plano Lume"><i class="ph-bold ph-whatsapp-logo"></i>Agendar avaliação</button>
-        </div>
-        <div class="pay">
-          <h3>Formas de pagamento</h3>
-          <div class="pay-list">
-            <div><i class="ph ph-credit-card"></i><p><b>Até 12x sem juros</b><span>No cartão de crédito, para tratamentos</span></p></div>
-            <div><i class="ph ph-qr-code"></i><p><b>5% de desconto no Pix</b><span>Pagamento à vista no dia</span></p></div>
-            <div><i class="ph ph-receipt"></i><p><b>Orçamento por escrito</b><span>Você leva para casa e decide com calma</span></p></div>
-          </div>
-        </div>
+      <div class="team-head">
+        <h2 class="rv">Quem atende aqui.</h2>
+        <a class="link-arrow rv" href="equipe.html">Formação e diplomas <i class="ph ph-arrow-right"></i></a>
       </div>
+      <div class="team-row" id="team-row"></div>
     </div>
   </section>
 
-  <section id="duvidas" style="padding-top:0">
-    <div class="wrap faq-grid">
-      <div class="rv">
-        <h2>Perguntas frequentes</h2>
-        <p class="lead">Não achou o que procurava? Mande sua dúvida no WhatsApp.</p>
-      </div>
-      <div class="faq-list rv" style="--d:1">
-        <details><summary>A avaliação é paga?<i class="ph-bold ph-plus"></i></summary><p>A primeira avaliação não tem custo para quem vem pelo site. Ela inclui conversa com o dentista, exame clínico e o plano de tratamento por escrito.</p></details>
-        <details><summary>Vocês atendem meu convênio?<i class="ph-bold ph-plus"></i></summary><p>Atendemos os convênios listados no topo da página. Se o seu não estiver lá, mande o nome no WhatsApp que a gente confirma.</p></details>
-        <details><summary>Quanto tempo dura a primeira consulta?<i class="ph-bold ph-plus"></i></summary><p>Cerca de 40 minutos. Se precisar de raio-x, ele é feito na hora, na própria clínica.</p></details>
-        <details><summary>Atendem crianças?<i class="ph-bold ph-plus"></i></summary><p>Sim, a partir de 3 anos. A primeira visita é só para a criança conhecer o espaço, sem nenhum procedimento.</p></details>
-        <details><summary>Posso remarcar?<i class="ph-bold ph-plus"></i></summary><p>Pode. É só avisar pelo WhatsApp com pelo menos 24 horas de antecedência.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <section class="where" id="contato">
+  <section class="quote">
     <div class="wrap">
-      <div class="where-box rv">
-        <div class="where-info">
-          <h2>Venha conhecer a clínica.</h2>
-          <dl>
-            <div><dt><i class="ph ph-map-pin"></i></dt><dd><b>Rua das Acácias, 418, sala 3</b><span>Centro, a duas quadras da praça</span></dd></div>
-            <div><dt><i class="ph ph-clock"></i></dt><dd><b>Segunda a sexta, das 8h às 20h</b><span>Sábado, das 8h às 13h</span></dd></div>
-            <div><dt><i class="ph ph-car"></i></dt><dd><b>Estacionamento conveniado</b><span>Primeira hora por nossa conta</span></dd></div>
-          </dl>
-          <div class="ctas">
-            <button class="btn btn-main" data-book><i class="ph-bold ph-whatsapp-logo"></i>Agendar avaliação</button>
-            <a class="btn btn-line" href="https://maps.google.com/?q=Rua+das+Acacias+418" target="_blank" rel="noopener"><i class="ph ph-navigation-arrow"></i>Ver no mapa</a>
-          </div>
+      <blockquote class="rv">“Levo meus dois filhos e minha mãe. Cada um com um dentista diferente, e todo mundo sai daqui rindo.”</blockquote>
+      <footer class="rv"><p><b>Cláudia Rezende</b><br><span>Paciente desde 2014</span></p><p class="note">Depoimento fictício para demonstração.</p></footer>
+    </div>
+  </section>
+
+  <section class="reviews" id="avaliacoes">
+    <div class="wrap">
+      <div class="reviews-head">
+        <div class="rv">
+          <h2>O que falam no Google.</h2>
+          <p class="reviews-score"><b>4,9</b><span class="stars" aria-label="5 estrelas">★★★★★</span><span>712 avaliações</span></p>
         </div>
-        <div class="where-photo">
-          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=80" alt="Consultório com cadeira odontológica e equipamentos" loading="lazy">
+        <div class="reviews-nav rv" style="--d:1">
+          <button class="x" data-scroll="-1" aria-label="Avaliações anteriores"><i class="ph ph-arrow-left"></i></button>
+          <button class="x" data-scroll="1" aria-label="Próximas avaliações"><i class="ph ph-arrow-right"></i></button>
         </div>
+      </div>
+      <div class="review-track" id="review-track"></div>
+      <p class="reviews-note">Avaliações de exemplo, fictícias. No site da clínica, entram os prints das avaliações reais dela.</p>
+    </div>
+  </section>
+
+  <section id="visite" class="visit">
+    <div class="wrap visit-grid">
+      <div>
+        <h2 class="rv">Passa aqui.</h2>
+        <dl class="rv" style="--d:1">
+          <div><dt>Endereço</dt><dd>Rua Fernandes Tourinho, 470, sala 1102<br>Savassi, Belo Horizonte</dd></div>
+          <div><dt>Horário</dt><dd>Segunda a sexta, das 8h às 20h<br>Sábado, das 8h às 12h</dd></div>
+          <div><dt>Estacionamento</dt><dd>Conveniado no prédio. A primeira hora é por nossa conta.</dd></div>
+          <div><dt>Telefone</dt><dd><a href="tel:+553130000000">(31) 3000-0000</a></dd></div>
+        </dl>
+        <div class="ctas rv" style="--d:2">
+          <button class="btn btn-main" data-book><i class="ph-bold ph-whatsapp-logo"></i>Marcar avaliação</button>
+          <a class="btn btn-ghost" href="https://maps.google.com/?q=Rua+Fernandes+Tourinho+470+Savassi+Belo+Horizonte" target="_blank" rel="noopener"><i class="ph ph-map-trifold"></i>Abrir no mapa</a>
+        </div>
+      </div>
+      <div class="visit-photo rv" style="--d:1">
+        <img src="https://images.unsplash.com/photo-1776886099265-6366478b341b?w=1100&q=80" alt="Sala de espera clara com cadeiras brancas e plantas" loading="lazy">
       </div>
     </div>
   </section>
@@ -241,35 +156,30 @@
 
 <footer class="site">
   <div class="wrap">
-    <span>Lume Odontologia. Responsável técnico: Dra. Helena Moura, CRO 00000.</span>
-    <span>Marca, profissionais, fotos, endereço, avaliações e preços fictícios para demonstração.</span>
+    <span>Clínica Vieira Odontologia. Responsável técnica: Dra. Marina Vieira, CRO-MG 00000.</span>
+    <span>Clínica, profissionais, endereço, avaliações e preços fictícios para demonstração.</span>
   </div>
 </footer>
 
-<div class="bar" id="bar">
-  <button class="btn btn-main" data-book><i class="ph-bold ph-whatsapp-logo"></i>Agendar avaliação</button>
-</div>
+<div class="bar" id="bar"><button class="btn btn-main" data-book><i class="ph-bold ph-whatsapp-logo"></i>Marcar avaliação</button></div>
 
 <dialog class="book" id="book" aria-labelledby="book-title">
   <div class="book-head">
     <div>
-      <h2 id="book-title">Agendar avaliação</h2>
-      <p>Três escolhas e a mensagem chega pronta no nosso WhatsApp.</p>
+      <h2 id="book-title">Marcar avaliação</h2>
+      <p>Escolha abaixo e a mensagem já chega pronta no nosso WhatsApp. A gente responde em horário comercial.</p>
     </div>
     <button class="x" data-close aria-label="Fechar"><i class="ph-bold ph-x"></i></button>
   </div>
   <div class="book-body">
-    <div class="q"><h3><i class="ph ph-tooth"></i>O que você precisa?</h3><div class="chips" data-q="treat"></div></div>
-    <div class="q"><h3><i class="ph ph-calendar-blank"></i>Melhor período</h3><div class="chips" data-q="time"></div></div>
-    <div class="q"><h3><i class="ph ph-identification-card"></i>Convênio</h3><div class="chips" data-q="plan"></div></div>
+    <div class="q"><h3>O que você precisa?</h3><div class="chips" data-q="treat"></div></div>
+    <div class="q"><h3>Melhor período</h3><div class="chips" data-q="time"></div></div>
+    <div class="q"><h3>Convênio</h3><div class="chips" data-q="plan"></div></div>
     <div class="field">
       <label for="book-name">Seu nome <span>(opcional)</span></label>
       <input id="book-name" type="text" autocomplete="given-name" placeholder="Como podemos te chamar?">
     </div>
-    <div>
-      <p class="preview-label">Mensagem que vai ser enviada</p>
-      <div class="preview" id="preview"></div>
-    </div>
+    <div><p class="preview-label">Mensagem que vai ser enviada</p><div class="preview" id="preview"></div></div>
   </div>
   <div class="book-foot">
     <button class="btn btn-main" id="send" disabled><i class="ph-bold ph-whatsapp-logo"></i>Enviar pelo WhatsApp</button>
@@ -280,51 +190,85 @@
 <script>
   /* Troque pelo número da clínica, com DDI e DDD, só números. */
   const WHATSAPP = "5500000000000";
-  const brl = v => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
+  const IMG = (id, q = "w=900") => `https://images.unsplash.com/photo-${id}?${q}&q=80`;
   const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const PLANS = ["Particular", "Amil Dental", "Bradesco Dental", "SulAmérica Odonto", "OdontoPrev", "Porto Seguro Odonto", "MetLife"];
-  $("#plans-list").innerHTML = PLANS.slice(1).map(p => `<li>${p}</li>`).join("");
-
-  /* ---------- Simulador ---------- */
-  const CONCERNS = [
-    { id: "cor", icon: "ph-sun", label: "Dentes amarelados", treat: "Clareamento", name: "Clareamento dental",
-      desc: "Uma sessão no consultório e acabamento em casa com moldeira feita sob medida.", time: "Cerca de 2 semanas", visits: "2 consultas", price: 690 },
-    { id: "falta", icon: "ph-tooth", label: "Dente faltando", treat: "Implante", name: "Implante dentário",
-      desc: "Pino de titânio com coroa de porcelana. Fica firme e com a cor dos outros dentes.", time: "3 a 6 meses", visits: "3 a 4 consultas", price: 2900, per: "por dente" },
-    { id: "torto", icon: "ph-arrows-in-line-horizontal", label: "Dentes tortos", treat: "Aparelho ou alinhador", name: "Alinhadores ou aparelho",
-      desc: "Alinhadores transparentes ou aparelho fixo, conforme o caso e o seu orçamento.", time: "12 a 24 meses", visits: "Revisão mensal", price: 180, per: "por mês" },
-    { id: "dor", icon: "ph-lightning", label: "Dor ou sensibilidade", treat: "Dor ou canal", name: "Canal ou restauração",
-      desc: "Primeiro aliviamos a dor. Depois tratamos a causa, seja cárie, trinca ou canal.", time: "1 a 3 semanas", visits: "1 a 3 consultas", price: 220 },
-    { id: "forma", icon: "ph-smiley", label: "Quero mudar o sorriso", treat: "Lentes de contato", name: "Lentes de contato dental",
-      desc: "Lâminas finas de porcelana que corrigem cor, tamanho e formato dos dentes.", time: "3 a 4 semanas", visits: "3 a 4 consultas", price: 1400, per: "por dente" },
-    { id: "check", icon: "ph-first-aid-kit", label: "Só um check-up", treat: "Limpeza e check-up", name: "Check-up com limpeza",
-      desc: "Avaliação completa, raio-x se precisar e limpeza para tirar o tártaro.", time: "Uma visita", visits: "Cerca de 50 min", price: 160 },
+  /* ---------- Tratamentos ---------- */
+  const TREATMENTS = [
+    { name: "Implantes", desc: "Do planejamento à coroa, tudo feito aqui dentro.", price: "R$ 2.900", per: "por dente", img: "1567516364473-233c4b6fcfbe" },
+    { name: "Aparelho e alinhadores", desc: "Fixo ou transparente. Você escolhe depois de ver a simulação.", price: "R$ 180", per: "por mês", img: "1544825471-302679fe3509" },
+    { name: "Clareamento", desc: "No consultório e em casa, com moldeira sob medida.", price: "R$ 690", per: "tratamento completo", img: "1594756154841-ac5d160dbf46" },
+    { name: "Lentes e facetas", desc: "Porcelana fina, no tom e no formato dos seus dentes.", price: "R$ 1.400", per: "por dente", img: "1677026010083-78ec7f1b84ed" },
+    { name: "Odontopediatria", desc: "A primeira consulta é só para a criança conhecer a cadeira.", price: "R$ 160", per: "consulta", img: "1708687045000-9dbb586ad1e2" },
+    { name: "Limpeza e check-up", desc: "Uma hora, com raio-x na hora se precisar.", price: "R$ 160", per: "consulta", img: "1662837775286-7e6258c7c595" },
   ];
-  $("#concerns").innerHTML = CONCERNS.map((c, i) => `
-    <button class="concern rv" style="--d:${i % 2}" data-c="${c.id}" aria-pressed="false"><i class="ph ${c.icon}"></i>${c.label}</button>`).join("");
+  $("#treat-list").innerHTML = TREATMENTS.map((t, i) => `
+    <li class="rv" style="--d:${i % 3}">
+      <button class="treat-row" data-book="${t.name}" data-peek="${t.img}">
+        <h3>${t.name}</h3>
+        <p>${t.desc}</p>
+        <span class="price">a partir de<b>${t.price}</b>${t.per}</span>
+        <i class="ph ph-arrow-right"></i>
+      </button>
+    </li>`).join("");
 
-  $("#concerns").addEventListener("click", e => {
-    const b = e.target.closest(".concern"); if (!b) return;
-    const c = CONCERNS.find(x => x.id === b.dataset.c);
-    $$(".concern").forEach(x => x.setAttribute("aria-pressed", x === b));
-    $("#result").innerHTML = `
-      <div class="result-body swap">
-        <div><small>Tratamento indicado</small><h3>${c.name}</h3></div>
-        <p>${c.desc}</p>
-        <div class="facts">
-          <div><span>Duração</span><b>${c.time}</b></div>
-          <div><span>Consultas</span><b>${c.visits}</b></div>
-        </div>
-        <div class="price"><span>a partir de</span><b>${brl(c.price)}</b>${c.per ? `<em>${c.per}</em>` : ""}</div>
-        <p class="note">O valor final é definido na avaliação, que não tem compromisso.</p>
-        <button class="btn btn-main" data-book="${c.treat}"><i class="ph-bold ph-whatsapp-logo"></i>Agendar avaliação</button>
-      </div>`;
-    // No celular o resultado fica abaixo das opções, então levamos a pessoa até ele
-    if (matchMedia("(max-width: 1024px)").matches) $("#result").scrollIntoView({ behavior: REDUCE ? "auto" : "smooth", block: "nearest" });
-  });
+  // No computador, a foto do tratamento acompanha o mouse enquanto ele passa pela lista
+  const peek = $("#peek"), peekImg = peek.querySelector("img");
+  if (matchMedia("(hover: hover) and (min-width: 1025px)").matches && !REDUCE) {
+    $("#treat-list").addEventListener("pointermove", e => {
+      const row = e.target.closest(".treat-row");
+      if (!row) return peek.classList.remove("on");
+      const src = IMG(row.dataset.peek, "w=600&h=750&fit=crop");
+      if (peekImg.src !== src) peekImg.src = src;
+      peek.style.translate = `${e.clientX + 28}px ${e.clientY - 180}px`;
+      peek.classList.add("on");
+    });
+    $("#treat-list").addEventListener("pointerleave", () => peek.classList.remove("on"));
+  }
+
+  /* ---------- Equipe ---------- */
+  const TEAM = [
+    { id: "marina", name: "Dra. Marina Vieira", area: "Implantes e reabilitação", img: "1644335326474-544fbcf8855f", q: "w=700&h=930&fit=crop" },
+    { id: "julia", name: "Dra. Júlia Prado", area: "Clareamento, lentes e facetas", img: "1662837775286-7e6258c7c595", q: "w=700&h=930&fit=crop" },
+    { id: "caio", name: "Dr. Caio Rezende", area: "Aparelho e alinhadores", img: "1667133295308-9ef24f71952e", q: "w=700&h=930&fit=crop" },
+    { id: "rafael", name: "Dr. Rafael Teles", area: "Odontopediatria", img: "1708687045000-9dbb586ad1e2", q: "w=700&h=930&fit=crop&crop=focalpoint&fp-x=.78&fp-y=.4" },
+  ];
+  $("#team-row").innerHTML = TEAM.map((p, i) => `
+    <a class="person rv" style="--d:${i}" href="equipe.html#${p.id}">
+      <div class="ph-wrap"><img src="${IMG(p.img, p.q)}" alt="${p.name}" loading="lazy"></div>
+      <div><b>${p.name}</b><span>${p.area}</span></div>
+    </a>`).join("");
+
+  /* ---------- Avaliações ----------
+    Para usar um print real de uma avaliação da clínica, salve a imagem na pasta "avaliacoes/"
+    e troque o item por { img: "avaliacoes/print-1.png", name: "Nome de quem avaliou" }.
+  */
+  const REVIEWS = [
+    { name: "Fernanda Moreira", when: "há 1 semana", text: "Fiz clareamento com a Dra. Júlia e amei o resultado. Ela explicou tudo antes, sem enrolação, e o preço foi exatamente o do orçamento." },
+    { name: "Paulo Henrique", when: "há 3 semanas", text: "Coloquei dois implantes com a Dra. Marina. Tinha pavor de dentista e saí tranquilo. Atendimento no horário e recepção muito educada." },
+    { name: "Luciana Araújo", when: "há 1 mês", text: "Meu filho de 4 anos chorava só de ouvir falar em dentista. Com o Dr. Rafael ele foi brincando e agora pergunta quando volta kkkk" },
+    { name: "Gustavo Ribeiro", when: "há 2 meses", text: "Tô usando alinhador com o Dr. Caio. Ele mostrou a simulação no computador antes de fechar, ajudou muito a decidir." },
+    { name: "Marta Souza", when: "há 2 meses", text: "Clínica limpinha, estacionamento no prédio e marcam rapidinho pelo WhatsApp. Recomendo demais." },
+    { name: "Thiago Bastos", when: "há 4 meses", text: "Quebrei um dente num sábado de manhã e me encaixaram no mesmo dia. Resolveram na hora e ficou perfeito." },
+  ];
+  const AVATAR = ["#2443d0", "#c2410c", "#0f766e", "#7c3aed", "#b45309", "#be123c"];
+  $("#review-track").innerHTML = REVIEWS.map((r, i) => r.img ? `
+    <figure class="review shot rv" style="--d:${i % 3}"><img src="${r.img}" alt="Avaliação de ${r.name} no Google" loading="lazy"></figure>` : `
+    <figure class="review rv" style="--d:${i % 3}">
+      <figcaption>
+        <span class="avatar" style="background:${AVATAR[i % AVATAR.length]}">${r.name[0]}</span>
+        <span><b>${r.name}</b><small>${r.when}</small></span>
+      </figcaption>
+      <span class="stars" aria-label="5 estrelas">★★★★★</span>
+      <blockquote>${r.text}</blockquote>
+      <small class="src">Publicada no Google</small>
+    </figure>`).join("");
+  const track = $("#review-track");
+  $$("[data-scroll]").forEach(b => b.addEventListener("click", () => {
+    track.scrollBy({ left: +b.dataset.scroll * track.clientWidth * .8, behavior: REDUCE ? "auto" : "smooth" });
+  }));
 
   /* ---------- Antes e depois ---------- */
   const compare = $("#compare"), range = compare.querySelector("input");
@@ -339,9 +283,9 @@
 
   /* ---------- Agendamento ---------- */
   const OPTIONS = {
-    treat: ["Avaliação geral", ...CONCERNS.map(c => c.treat), "Plano Lume"],
+    treat: ["Avaliação geral", ...TREATMENTS.map(t => t.name)],
     time: ["Manhã", "Tarde", "Noite", "Sábado"],
-    plan: [...PLANS, "Outro"],
+    plan: ["Particular", "Amil Dental", "Bradesco Dental", "SulAmérica Odonto", "OdontoPrev", "Outro"],
   };
   const MISSING = { treat: "o que você precisa", time: "o melhor período", plan: "o convênio" };
   const pick = { treat: null, time: null, plan: null };
@@ -349,11 +293,10 @@
     box.innerHTML = OPTIONS[box.dataset.q].map(o => `<button class="chip" data-v="${o}" aria-pressed="false">${o}</button>`).join("");
   });
   const book = $("#book"), nameInput = $("#book-name");
-
   function message() {
     const n = nameInput.value.trim();
     return [
-      `Olá! Vim pelo site e quero agendar uma avaliação.`,
+      `Olá! Vim pelo site e quero marcar uma avaliação.`,
       `Tratamento: *${pick.treat || "..."}*`,
       `Melhor período: *${pick.time || "..."}*`,
       `Convênio: *${pick.plan || "..."}*`,
@@ -367,37 +310,31 @@
     $("#send").disabled = missing.length > 0;
     $("#hint").textContent = missing.length ? `Falta escolher ${missing.map(k => MISSING[k]).join(", ").replace(/, ([^,]*)$/, " e $1")}.` : "Abre o WhatsApp com a mensagem pronta.";
   }
-  function openBook(treat) {
-    if (treat) pick.treat = treat;
-    renderBook();
-    book.showModal();
-  }
   $$("[data-q]").forEach(box => box.addEventListener("click", e => {
     const c = e.target.closest(".chip"); if (!c) return;
     pick[box.dataset.q] = c.dataset.v;
     renderBook();
   }));
   nameInput.addEventListener("input", renderBook);
-  // Botões de agendar podem ser criados depois (ex.: no resultado do simulador), por isso a delegação no documento
   document.addEventListener("click", e => {
-    const b = e.target.closest("[data-book]");
-    if (b) openBook(b.dataset.book || null);
+    const b = e.target.closest("[data-book]"); if (!b) return;
+    if (b.dataset.book) pick.treat = b.dataset.book;
+    renderBook();
+    peek.classList.remove("on");
+    book.showModal();
   });
   $("[data-close]").addEventListener("click", () => book.close());
   book.addEventListener("click", e => { if (e.target === book) book.close(); });
-  $("#send").addEventListener("click", () => {
-    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message())}`, "_blank", "noopener");
-  });
+  $("#send").addEventListener("click", () => window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message())}`, "_blank", "noopener"));
 
-  /* ---------- Navegação e revelar ao rolar ---------- */
-  new IntersectionObserver(([e]) => $("#nav").classList.toggle("solid", !e.isIntersecting)).observe($(".hero h1"));
-  // A barra fixa só aparece depois do hero e some quando outro botão de agendar já está na tela
+  /* ---------- Navegação, barra fixa e revelar ao rolar ---------- */
+  new IntersectionObserver(([e]) => $("#nav").classList.toggle("solid", !e.isIntersecting), { rootMargin: "-76px 0px 0px 0px" }).observe($(".hero"));
   const visibleCtas = new Set();
   let pastHero = false;
   const syncBar = () => $("#bar").classList.toggle("show", pastHero && visibleCtas.size === 0);
   new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; syncBar(); }).observe($("#hero-ctas"));
   const ctaIO = new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? visibleCtas.add(e.target) : visibleCtas.delete(e.target)); syncBar(); });
-  [$("#result"), $(".where-info .ctas")].forEach(el => ctaIO.observe(el));
+  ctaIO.observe($(".visit .ctas"));
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
   $$(".rv").forEach(el => io.observe(el));
 </script>

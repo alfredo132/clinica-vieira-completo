@@ -3,156 +3,121 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Equipe | Lume Odontologia</title>
-<meta name="description" content="Conheça as dentistas e os dentistas da Lume Odontologia: formação, especializações, cursos, diplomas e registro no CRO.">
-<meta name="theme-color" content="#f3f5f4">
+<title>Equipe | Clínica Vieira</title>
+<meta name="description" content="Dentistas da Clínica Vieira, na Savassi: formação, especializações, cursos, diplomas e registro no CRO.">
+<meta name="theme-color" content="#f5f5f3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 <link rel="stylesheet" href="styles.css">
 <style>
-  .nav-links a[aria-current="page"] { color: var(--ink); font-weight: 700; }
+  .page-head { padding: 160px 0 56px; }
+  .page-head h1 { font-size: clamp(48px, 7vw, 104px); max-width: 11ch; }
+  .page-head .lead { margin-top: 24px; }
+  .verify { margin-top: 32px; font-size: 15px; color: var(--ink-2); max-width: 60ch; padding-left: 16px; border-left: 2px solid var(--accent); }
+  .verify a { color: var(--accent); font-weight: 600; text-underline-offset: 3px; }
 
-  .team-hero { padding: 64px 0 40px; }
-  .team-hero h1 { font-size: clamp(40px, 5vw, 64px); max-width: 16ch; }
-  .team-hero .lead { margin-top: 18px; }
-  .jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
-  .jump a { display: flex; align-items: center; gap: 10px; padding: 6px 16px 6px 6px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); text-decoration: none; font-weight: 600; font-size: 15px; transition: border-color .2s; }
-  .jump a:hover { border-color: var(--accent); }
-  .jump img { width: 36px; height: 36px; border-radius: 999px; object-fit: cover; object-position: 50% 25%; }
+  .profile { padding: 72px 0; border-top: 1px solid var(--ink); scroll-margin-top: 64px; }
+  .profile-grid { display: grid; grid-template-columns: 4fr 8fr; gap: 72px; align-items: start; }
+  .profile-photo { position: sticky; top: 100px; }
+  .profile-photo img { border-radius: var(--r); aspect-ratio: 4 / 5; width: 100%; object-fit: cover; }
+  .profile-main h2 { font-size: clamp(36px, 4.4vw, 60px); }
+  .role { margin-top: 12px; font-size: 19px; color: var(--ink-2); }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 22px; font-size: 15px; color: var(--muted); }
+  .meta b { color: var(--ink); font-weight: 600; }
+  .meta a { color: var(--accent); font-weight: 600; text-underline-offset: 3px; }
+  .bio { margin-top: 32px; font-size: clamp(20px, 1.6vw, 24px); line-height: 1.5; max-width: 40ch; }
+  .profile-main .btn { margin-top: 32px; }
 
-  .verify { display: flex; gap: 14px; align-items: start; padding: 18px 20px; border-radius: 16px; background: var(--accent-soft); margin-top: 28px; max-width: 720px; font-size: 15px; }
-  .verify i { color: var(--accent); font-size: 24px; flex: none; }
-  .verify a { font-weight: 700; color: var(--accent); }
+  .block { margin-top: 64px; }
+  .block > h3 { font-family: var(--body); font-stretch: 100%; font-size: 14px; font-weight: 600; letter-spacing: 0; color: var(--muted); padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .edu { list-style: none; }
+  .edu li { display: grid; grid-template-columns: 90px 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .edu time { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent); }
+  .edu b { display: block; font-size: 19px; font-weight: 600; line-height: 1.35; }
+  .edu span { color: var(--muted); }
+  .courses { list-style: none; columns: 2; column-gap: 32px; padding-top: 18px; }
+  .courses li { padding: 6px 0 6px 18px; position: relative; break-inside: avoid; }
+  .courses li::before { content: ""; position: absolute; left: 0; top: 17px; width: 8px; height: 1.5px; background: var(--ink); }
 
-  .profile { padding: 56px 0; border-top: 1px solid var(--line); scroll-margin-top: 72px; }
-  .profile-grid { display: grid; grid-template-columns: 360px 1fr; gap: 56px; align-items: start; }
-  .profile-side { position: sticky; top: 96px; display: grid; gap: 16px; }
-  .profile-photo { border-radius: var(--r); overflow: hidden; aspect-ratio: 4 / 5; background: var(--surface-2); }
-  .profile-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
-  .facts-card { border-radius: var(--r); background: var(--surface); border: 1px solid var(--line); padding: 20px 22px; display: grid; gap: 14px; }
-  .facts-card div { display: grid; grid-template-columns: 26px 1fr; gap: 10px; font-size: 15px; }
-  .facts-card i { color: var(--accent); font-size: 20px; line-height: 1.4; }
-  .facts-card b { display: block; }
-  .facts-card span { color: var(--muted); }
-  .facts-card a { color: var(--accent); font-weight: 700; font-size: 14px; }
-  .profile-side .btn { width: 100%; }
-
-  .profile-main small { color: var(--accent); font-weight: 700; font-size: 14px; }
-  .profile-main h2 { margin: 4px 0 16px; }
-  .bio { font-size: 19px; line-height: 1.55; max-width: 60ch; }
-  .block { margin-top: 44px; }
-  .block > h3 { font-family: var(--body); font-size: 15px; font-weight: 700; color: var(--muted); letter-spacing: 0; margin-bottom: 18px; }
-
-  .timeline { list-style: none; display: grid; gap: 0; border-left: 2px solid var(--line); margin-left: 6px; }
-  .timeline li { position: relative; padding: 0 0 24px 26px; }
-  .timeline li:last-child { padding-bottom: 0; }
-  .timeline li::before { content: ""; position: absolute; left: -8px; top: 6px; width: 14px; height: 14px; border-radius: 999px; background: var(--surface); border: 3px solid var(--accent); }
-  .timeline time { font-weight: 700; color: var(--accent); font-size: 14px; }
-  .timeline b { display: block; font-size: 18px; font-weight: 700; line-height: 1.35; }
-  .timeline span { color: var(--muted); }
-
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tags li { list-style: none; padding: 8px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; font-weight: 600; }
-
-  .diplomas { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
-  .diploma { text-align: left; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); padding: 18px; display: grid; align-content: start; gap: 10px; transition: border-color .2s, transform .2s var(--ease), box-shadow .2s; }
-  .diploma:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
-  .diploma .thumb { aspect-ratio: 4 / 3; border-radius: 10px; background: var(--surface-2); display: grid; place-items: center; overflow: hidden; }
-  .diploma .thumb i { font-size: 40px; color: var(--accent); }
+  .diplomas { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; padding-top: 20px; }
+  .diploma { text-align: left; display: grid; gap: 10px; align-content: start; }
+  .diploma .thumb { aspect-ratio: 4 / 3; border-radius: var(--r); background: var(--paper); border: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; transition: border-color .2s; }
+  .diploma .thumb i { font-size: 34px; color: var(--muted); }
   .diploma .thumb img { width: 100%; height: 100%; object-fit: cover; }
-  .diploma b { font-size: 15px; line-height: 1.35; }
-  .diploma span { color: var(--muted); font-size: 13px; }
+  .diploma:hover .thumb { border-color: var(--ink); }
+  .diploma b { font-size: 15px; font-weight: 600; line-height: 1.35; }
+  .diploma span { color: var(--muted); font-size: 14px; }
 
-  dialog.cert { margin: auto; width: min(640px, calc(100% - 32px)); border: 0; border-radius: 24px; padding: 0; background: var(--surface); color: var(--ink); box-shadow: 0 30px 80px rgb(0 0 0 / .35); }
+  dialog.cert { margin: auto; width: min(680px, calc(100% - 32px)); border: 0; border-radius: 14px; padding: 0; background: var(--paper); color: var(--ink); box-shadow: 0 30px 80px rgb(0 0 0 / .3); }
   dialog.cert[open] { animation: rise .4s var(--ease); }
-  dialog.cert::backdrop { background: rgb(8 16 13 / .55); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
   .cert-head { display: flex; justify-content: space-between; gap: 16px; padding: 24px 24px 0; }
-  .cert-head h2 { font-size: 26px; }
-  .cert-head p { color: var(--muted); font-size: 15px; margin-top: 4px; }
-  .cert-body { padding: 20px 24px 24px; }
-  .cert-view { aspect-ratio: 4 / 3; border-radius: 16px; background: var(--surface-2); display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); overflow: hidden; }
+  .cert-head h2 { font-size: 28px; }
+  .cert-head p { color: var(--muted); font-size: 15px; margin-top: 6px; }
+  .cert-view { margin: 20px 24px 24px; aspect-ratio: 4 / 3; border-radius: var(--r); background: var(--bg); display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); overflow: hidden; }
   .cert-view img { width: 100%; height: 100%; object-fit: contain; }
-  .cert-view i { font-size: 56px; color: var(--accent); display: block; margin: 0 auto 10px; }
+  .cert-view i { font-size: 48px; display: block; margin: 0 auto 10px; }
 
-  .cta-band { padding: 72px 0; }
-  .cta-box { border-radius: var(--r); background: var(--accent); color: var(--accent-ink); padding: 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
-  .cta-box h2 { max-width: 18ch; }
-  .cta-box .btn { background: var(--surface); color: var(--ink); box-shadow: none; }
+  .end { padding: 96px 0; border-top: 1px solid var(--ink); }
+  .end .wrap { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+  .end h2 { max-width: 14ch; }
 
   @media (max-width: 1024px) {
-    /* Em telas menores a ordem vira: foto, nome, apresentação, dados, botão e formação */
-    .profile-grid { grid-template-columns: 1fr; gap: 16px; }
-    .profile-side, .profile-main { display: contents; }
-    .profile-photo { order: 1; max-width: 520px; }
-    .profile-main > small { order: 2; margin-top: 8px; }
-    .profile-main > h2 { order: 3; margin: -12px 0 0; }
-    .bio { order: 4; }
-    .facts-card { order: 5; max-width: 520px; }
-    .profile-side .btn { order: 6; max-width: 520px; }
-    .block { order: 7; margin-top: 24px; }
+    .profile-grid { grid-template-columns: 1fr; gap: 32px; }
+    .profile-photo { position: static; max-width: 440px; }
   }
   @media (max-width: 767px) {
-    .team-hero { padding: 36px 0 24px; }
-    .profile { padding: 40px 0; }
-    .profile-photo { aspect-ratio: 1 / 1; }
-    .bio { font-size: 17px; }
-    .block { margin-top: 32px; }
-    .diplomas { grid-template-columns: 1fr 1fr; }
-    .cta-box { padding: 32px 24px; }
-    .cta-box .btn { width: 100%; }
+    .page-head { padding: 112px 0 40px; }
+    .profile { padding: 48px 0; }
+    .profile-photo img { aspect-ratio: 1 / 1; }
+    .profile-main .btn { width: 100%; }
+    .block { margin-top: 44px; }
+    .edu li { grid-template-columns: 1fr; gap: 2px; }
+    .courses { columns: 1; }
+    .diplomas { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .end .btn { width: 100%; }
   }
 </style>
 </head>
 <body>
 <script>document.documentElement.classList.add("js")</script>
 
-<header class="nav" id="nav">
+<header class="nav light" id="nav">
   <div class="wrap">
-    <a class="brand" href="index.html" aria-label="Lume Odontologia, início">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="10" fill="var(--accent)"/><path d="M11 8v16h10" stroke="var(--accent-ink)" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Lume
-    </a>
+    <a class="brand" href="index.html"><b>Clínica Vieira</b><span>Odontologia, desde 2006</span></a>
     <ul class="nav-links">
-      <li><a href="index.html#simulador">Simulador</a></li>
-      <li><a href="index.html#resultados">Resultados</a></li>
+      <li><a href="index.html#tratamentos">Tratamentos</a></li>
+      <li><a href="index.html#a-clinica">A clínica</a></li>
       <li><a href="equipe.html" aria-current="page">Equipe</a></li>
-      <li><a href="index.html#plano">Plano</a></li>
-      <li><a href="index.html#contato">Contato</a></li>
+      <li><a href="index.html#visite">Como chegar</a></li>
     </ul>
-    <a class="btn btn-main" data-wa="" href="#"><i class="ph-bold ph-whatsapp-logo"></i>Agendar avaliação</a>
+    <a class="btn btn-main" data-wa="" href="#">Marcar avaliação</a>
   </div>
 </header>
 
 <main>
-  <section class="team-hero">
+  <section class="page-head" style="padding-bottom:56px">
     <div class="wrap">
-      <h1 class="rv">Conheça quem vai cuidar do seu sorriso.</h1>
-      <p class="lead rv" style="--d:1">Formação, especializações, cursos e diplomas de cada profissional. Tudo aberto para você conferir antes de marcar.</p>
-      <nav class="jump rv" style="--d:2" id="jump" aria-label="Ir para o perfil"></nav>
-      <div class="verify rv" style="--d:3">
-        <i class="ph ph-seal-check"></i>
-        <p>Todo dentista precisa de registro no Conselho Regional de Odontologia. Você pode conferir o CRO de qualquer profissional da equipe no <a href="https://website.cfo.org.br/consulta-inscritos/" target="_blank" rel="noopener">site do Conselho Federal de Odontologia</a>.</p>
-      </div>
+      <h1 class="rv">Quem cuida de você aqui.</h1>
+      <p class="lead rv" style="--d:1">Onde cada um estudou, em que se especializou e os cursos que fez. Os diplomas ficam abertos para quem quiser ver.</p>
+      <p class="verify rv" style="--d:2">Todo dentista precisa estar inscrito no Conselho Regional de Odontologia. Dá para conferir o registro de qualquer um de nós no <a href="https://website.cfo.org.br/consulta-inscritos/" target="_blank" rel="noopener">site do Conselho Federal de Odontologia</a>.</p>
     </div>
   </section>
 
   <div id="profiles"></div>
 
-  <section class="cta-band">
+  <section class="end">
     <div class="wrap">
-      <div class="cta-box rv">
-        <h2>Não sabe com quem marcar? A gente indica.</h2>
-        <a class="btn" data-wa="Ainda não sei com quem marcar" href="#"><i class="ph-bold ph-whatsapp-logo"></i>Agendar avaliação</a>
-      </div>
+      <h2 class="rv">Não sabe com quem marcar? A gente indica.</h2>
+      <a class="btn btn-main rv" data-wa="Olá! Ainda não sei com qual dentista marcar." href="#"><i class="ph-bold ph-whatsapp-logo"></i>Marcar avaliação</a>
     </div>
   </section>
 </main>
 
 <footer class="site">
   <div class="wrap">
-    <span>Lume Odontologia. Responsável técnica: Dra. Helena Moura, CRO-MG 00000.</span>
+    <span>Clínica Vieira Odontologia. Responsável técnica: Dra. Marina Vieira, CRO-MG 00000.</span>
     <span>Profissionais, formação, diplomas e registros fictícios para demonstração.</span>
   </div>
 </footer>
@@ -162,7 +127,7 @@
     <div><h2 id="cert-title"></h2><p id="cert-sub"></p></div>
     <button class="x" data-close aria-label="Fechar"><i class="ph-bold ph-x"></i></button>
   </div>
-  <div class="cert-body"><div class="cert-view" id="cert-view"></div></div>
+  <div class="cert-view" id="cert-view"></div>
 </dialog>
 
 <script>
@@ -170,102 +135,115 @@
   const WHATSAPP = "5500000000000";
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
-  const IMG = (id, w = 900) => `https://images.unsplash.com/photo-${id}?w=${w}&q=80`;
+  const IMG = (id, q) => `https://images.unsplash.com/photo-${id}?${q}&q=80`;
   const wa = text => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
 
   /*
-    Para colocar a foto real de um diploma, preencha "img" com o caminho do arquivo,
-    por exemplo: img: "diplomas/helena-graduacao.jpg". Sem "img", aparece um aviso no lugar.
+    Para mostrar a foto real de um diploma, salve a imagem na pasta "diplomas/"
+    e preencha "img", por exemplo: img: "diplomas/marina-graduacao.jpg".
+    Sem "img", o cartão abre com um aviso no lugar da foto.
   */
   const TEAM = [
     {
-      id: "helena", name: "Dra. Helena Moura", role: "Responsável técnica", area: "Implantes e reabilitação oral",
-      cro: "CRO-MG 00000", photo: "1683349370055-7eba66a404c6", days: "Segunda, quarta e sexta",
-      bio: "Atende há 15 anos. Antes de qualquer procedimento, mostra no modelo o que vai ser feito e quanto tempo leva.",
+      id: "marina", name: "Dra. Marina Vieira", role: "Fundadora. Implantes e reabilitação oral",
+      cro: "CRO-MG 00000", since: "Na clínica desde 2006", days: "Segunda, quarta e sexta",
+      photo: ["1644335326474-544fbcf8855f", "w=900&h=1125&fit=crop"],
+      bio: "Abriu a clínica sozinha, numa sala de 30 metros. Ainda faz questão de explicar cada etapa com o modelo na mão antes de começar.",
       education: [
-        { year: "2009", title: "Graduação em Odontologia", place: "UFMG" },
-        { year: "2012", title: "Especialização em Implantodontia", place: "ABO-MG" },
-        { year: "2015", title: "Mestrado em Clínica Odontológica", place: "PUC Minas" },
+        { year: "2003", title: "Graduação em Odontologia", place: "UFMG" },
+        { year: "2006", title: "Especialização em Implantodontia", place: "ABO-MG" },
+        { year: "2011", title: "Mestrado em Clínica Odontológica", place: "PUC Minas" },
         { year: "2021", title: "Aperfeiçoamento em Cirurgia Guiada", place: "São Paulo" },
       ],
-      courses: ["Cirurgia guiada por computador", "Prótese sobre implante", "Sedação consciente com óxido nitroso", "Atendimento a pacientes com ansiedade"],
+      courses: ["Cirurgia guiada por computador", "Prótese sobre implante", "Enxerto ósseo", "Sedação consciente com óxido nitroso"],
       diplomas: [
-        { title: "Diploma de Graduação", place: "UFMG, 2009" },
-        { title: "Certificado de Especialista em Implantodontia", place: "ABO-MG, 2012" },
-        { title: "Diploma de Mestrado", place: "PUC Minas, 2015" },
-        { title: "Habilitação em Sedação Consciente", place: "CRO-MG, 2018" },
+        { title: "Diploma de Graduação", place: "UFMG, 2003" },
+        { title: "Especialista em Implantodontia", place: "ABO-MG, 2006" },
+        { title: "Diploma de Mestrado", place: "PUC Minas, 2011" },
+        { title: "Habilitação em Sedação Consciente", place: "CRO-MG, 2016" },
       ],
     },
     {
-      id: "caio", name: "Dr. Caio Rezende", role: "Ortodontia", area: "Alinhadores e aparelhos",
-      cro: "CRO-MG 00000", photo: "1667133295308-9ef24f71952e", days: "Terça, quinta e sábado",
-      bio: "Trata adolescentes e adultos. Mostra a simulação do resultado no computador antes de você decidir entre alinhador e aparelho.",
+      id: "julia", name: "Dra. Júlia Prado", role: "Clareamento, lentes e facetas",
+      cro: "CRO-MG 00000", since: "Na clínica desde 2015", days: "Segunda a sexta, até 20h",
+      photo: ["1662837775286-7e6258c7c595", "w=900&h=1125&fit=crop"],
+      bio: "Planeja o sorriso no computador primeiro. Você aprova a cor e o formato antes de qualquer desgaste no dente.",
       education: [
-        { year: "2013", title: "Graduação em Odontologia", place: "PUC Minas" },
-        { year: "2016", title: "Especialização em Ortodontia", place: "UFMG" },
+        { year: "2012", title: "Graduação em Odontologia", place: "PUC Minas" },
+        { year: "2015", title: "Especialização em Dentística", place: "UFMG" },
+        { year: "2019", title: "Aperfeiçoamento em Lentes de Porcelana", place: "São Paulo" },
+      ],
+      courses: ["Planejamento digital do sorriso", "Lentes de contato em porcelana", "Clareamento a laser", "Fotografia odontológica"],
+      diplomas: [
+        { title: "Diploma de Graduação", place: "PUC Minas, 2012" },
+        { title: "Especialista em Dentística", place: "UFMG, 2015" },
+        { title: "Certificado em Lentes de Porcelana", place: "2019" },
+      ],
+    },
+    {
+      id: "caio", name: "Dr. Caio Rezende", role: "Aparelho e alinhadores",
+      cro: "CRO-MG 00000", since: "Na clínica desde 2017", days: "Terça, quinta e sábado",
+      photo: ["1667133295308-9ef24f71952e", "w=900&h=1125&fit=crop"],
+      bio: "Atende adolescentes e adultos. Mostra a simulação do resultado antes de você decidir entre aparelho fixo e alinhador.",
+      education: [
+        { year: "2013", title: "Graduação em Odontologia", place: "UFMG" },
+        { year: "2016", title: "Especialização em Ortodontia", place: "ABO-MG" },
         { year: "2019", title: "Certificação em Alinhadores Transparentes", place: "Curso internacional" },
-        { year: "2022", title: "Aperfeiçoamento em Ortodontia Digital", place: "Belo Horizonte" },
       ],
       courses: ["Alinhadores transparentes", "Ortodontia digital", "Aparelhos autoligados", "Ortodontia para adultos"],
       diplomas: [
-        { title: "Diploma de Graduação", place: "PUC Minas, 2013" },
-        { title: "Certificado de Especialista em Ortodontia", place: "UFMG, 2016" },
+        { title: "Diploma de Graduação", place: "UFMG, 2013" },
+        { title: "Especialista em Ortodontia", place: "ABO-MG, 2016" },
         { title: "Certificação em Alinhadores", place: "2019" },
       ],
     },
     {
-      id: "lucas", name: "Dr. Lucas Amaral", role: "Estética e clareamento", area: "Lentes, facetas e clareamento",
-      cro: "CRO-MG 00000", photo: "1647763283644-578114aba0c2", days: "Segunda a sexta, até 20h",
-      bio: "Planeja cada sorriso no digital para você aprovar a cor e o formato antes de fazer qualquer desgaste.",
+      id: "rafael", name: "Dr. Rafael Teles", role: "Odontopediatria",
+      cro: "CRO-MG 00000", since: "Na clínica desde 2019", days: "Segunda a sexta, à tarde",
+      photo: ["1708687045000-9dbb586ad1e2", "w=900&h=1125&fit=crop&crop=focalpoint&fp-x=.78&fp-y=.4"],
+      bio: "Atende crianças a partir de 1 ano. Na primeira visita a criança só senta na cadeira, brinca com o espelhinho e vai embora.",
       education: [
-        { year: "2015", title: "Graduação em Odontologia", place: "Centro Universitário Newton Paiva" },
-        { year: "2018", title: "Especialização em Dentística", place: "ABO-MG" },
-        { year: "2020", title: "Aperfeiçoamento em Lentes de Porcelana", place: "São Paulo" },
-        { year: "2023", title: "Curso de Clareamento a Laser", place: "Belo Horizonte" },
+        { year: "2014", title: "Graduação em Odontologia", place: "Newton Paiva" },
+        { year: "2018", title: "Especialização em Odontopediatria", place: "UFMG" },
+        { year: "2022", title: "Curso de Atendimento a Crianças com Autismo", place: "Belo Horizonte" },
       ],
-      courses: ["Lentes de contato em porcelana", "Planejamento digital do sorriso", "Clareamento a laser", "Fotografia odontológica"],
+      courses: ["Manejo de comportamento infantil", "Atendimento a crianças com autismo", "Ortodontia preventiva", "Primeiros socorros pediátricos"],
       diplomas: [
-        { title: "Diploma de Graduação", place: "Newton Paiva, 2015" },
-        { title: "Certificado de Especialista em Dentística", place: "ABO-MG, 2018" },
-        { title: "Certificado em Lentes de Porcelana", place: "2020" },
+        { title: "Diploma de Graduação", place: "Newton Paiva, 2014" },
+        { title: "Especialista em Odontopediatria", place: "UFMG, 2018" },
+        { title: "Certificado em Atendimento ao Autismo", place: "2022" },
       ],
     },
   ];
 
-  $("#jump").innerHTML = TEAM.map(d => `<a href="#${d.id}"><img src="${IMG(d.photo, 120)}" alt="">${d.name}</a>`).join("");
-
   $("#profiles").innerHTML = TEAM.map(d => `
     <section class="profile" id="${d.id}">
       <div class="wrap profile-grid">
-        <aside class="profile-side">
-          <div class="profile-photo rv"><img src="${IMG(d.photo, 900)}" alt="${d.name}" loading="lazy"></div>
-          <div class="facts-card rv" style="--d:1">
-            <div><i class="ph ph-identification-badge"></i><p><b>${d.cro}</b><a href="https://website.cfo.org.br/consulta-inscritos/" target="_blank" rel="noopener">Conferir no CFO</a></p></div>
-            <div><i class="ph ph-calendar-blank"></i><p><b>Atende</b><span>${d.days}</span></p></div>
-            <div><i class="ph ph-tooth"></i><p><b>Área</b><span>${d.area}</span></p></div>
-          </div>
-          <a class="btn btn-main rv" style="--d:2" data-wa="Quero agendar uma avaliação com ${d.name}" href="#"><i class="ph-bold ph-whatsapp-logo"></i>Agendar com ${d.name.split(" ").slice(0, 2).join(" ")}</a>
-        </aside>
+        <figure class="profile-photo rv"><img src="${IMG(...d.photo)}" alt="${d.name}" loading="lazy"></figure>
         <div class="profile-main">
-          <small class="rv">${d.role}</small>
           <h2 class="rv">${d.name}</h2>
-          <p class="bio rv" style="--d:1">${d.bio}</p>
+          <p class="role rv">${d.role}</p>
+          <div class="meta rv">
+            <span><b>${d.cro}</b>, <a href="https://website.cfo.org.br/consulta-inscritos/" target="_blank" rel="noopener">conferir no CFO</a></span>
+            <span>${d.since}</span>
+            <span>Atende ${d.days.toLowerCase()}</span>
+          </div>
+          <p class="bio rv">${d.bio}</p>
+          <a class="btn btn-main rv" data-wa="Olá! Quero marcar uma avaliação com ${d.name}." href="#"><i class="ph-bold ph-whatsapp-logo"></i>Marcar com ${d.name.split(" ").slice(0, 2).join(" ")}</a>
 
           <div class="block rv">
             <h3>Formação</h3>
-            <ol class="timeline">${d.education.map(e => `<li><time>${e.year}</time><b>${e.title}</b><span>${e.place}</span></li>`).join("")}</ol>
+            <ol class="edu">${d.education.map(e => `<li><time>${e.year}</time><div><b>${e.title}</b><span>${e.place}</span></div></li>`).join("")}</ol>
           </div>
-
           <div class="block rv">
-            <h3>Cursos e certificações</h3>
-            <ul class="tags">${d.courses.map(c => `<li>${c}</li>`).join("")}</ul>
+            <h3>Cursos</h3>
+            <ul class="courses">${d.courses.map(c => `<li>${c}</li>`).join("")}</ul>
           </div>
-
           <div class="block rv">
             <h3>Diplomas e certificados</h3>
             <div class="diplomas">${d.diplomas.map((p, i) => `
               <button class="diploma" data-doc="${d.id}" data-i="${i}">
-                <div class="thumb">${p.img ? `<img src="${p.img}" alt="" loading="lazy">` : `<i class="ph-duotone ph-certificate"></i>`}</div>
+                <div class="thumb">${p.img ? `<img src="${p.img}" alt="" loading="lazy">` : `<i class="ph ph-certificate"></i>`}</div>
                 <b>${p.title}</b><span>${p.place}</span>
               </button>`).join("")}
             </div>
@@ -283,20 +261,17 @@
     $("#cert-sub").textContent = `${d.name}, ${p.place}`;
     $("#cert-view").innerHTML = p.img
       ? `<img src="${p.img}" alt="${p.title} de ${d.name}">`
-      : `<div><i class="ph-duotone ph-certificate"></i>A foto deste diploma ainda não foi enviada.<br>Ela aparece aqui assim que a clínica adicionar.</div>`;
+      : `<div><i class="ph ph-certificate"></i>A foto deste diploma ainda não foi enviada.<br>Ela aparece aqui assim que a clínica adicionar.</div>`;
     cert.showModal();
   });
   $("[data-close]").addEventListener("click", () => cert.close());
   cert.addEventListener("click", e => { if (e.target === cert) cert.close(); });
 
-  /* ---------- WhatsApp ---------- */
+  /* ---------- WhatsApp e revelar ao rolar ---------- */
   $$("[data-wa]").forEach(a => {
-    a.href = wa(a.dataset.wa || "Olá! Vim pelo site e quero agendar uma avaliação.");
+    a.href = wa(a.dataset.wa || "Olá! Vim pelo site e quero marcar uma avaliação.");
     a.target = "_blank"; a.rel = "noopener";
   });
-
-  /* ---------- Navegação e revelar ao rolar ---------- */
-  new IntersectionObserver(([e]) => $("#nav").classList.toggle("solid", !e.isIntersecting)).observe($(".team-hero h1"));
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
   $$(".rv").forEach(el => io.observe(el));
 </script>
