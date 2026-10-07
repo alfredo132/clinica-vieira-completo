@@ -9,7 +9,7 @@ Site de demonstração da Clínica Vieira, clínica odontológica fictícia na S
 Para usar com uma clínica real:
 
 1. Troque o número em `WHATSAPP` nos dois arquivos HTML.
-2. Troque nome, endereço, telefone, convênios, nota do Google e fotos.
+2. Troque nome, endereço, telefone, convênios, nota do Google e fotos. A foto da capa fica em `images/capa.webp`.
    Não coloque preços, "avaliação gratuita" nem formas de pagamento: o Código de Ética Odontológica proíbe anunciar isso.
 3. Em `index.html`, edite as listas `TREATMENTS`, `TEAM`, `REVIEWS` e `PHOTOS` (fotos da clínica que passam no fim da página).
 4. Avaliações: use só avaliações reais da própria clínica. Salve os prints na pasta `avaliacoes/` e troque cada item de `REVIEWS` por `{ img: "avaliacoes/print-1.png", name: "Nome de quem avaliou" }`.

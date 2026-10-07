@@ -39,7 +39,7 @@ h2 { font-size: clamp(38px, 5.2vw, 72px); }
 .btn[disabled] { opacity: .4; cursor: not-allowed; transform: none; }
 
 /* ---------- Navegação ---------- */
-.nav { position: fixed; inset: 0 0 auto; z-index: 20; height: 76px; transition: background-color .3s, color .3s, border-color .3s; border-bottom: 1px solid transparent; color: #fff; }
+.nav { position: fixed; inset: 0 0 auto; z-index: 20; height: 76px; transition: background-color .3s, color .3s, border-color .3s; border-bottom: 1px solid transparent; color: var(--ink); }
 .nav.solid, .nav.light { background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: var(--ink); border-color: var(--line); }
 .nav .wrap { height: 100%; display: flex; align-items: center; gap: 36px; }
 .brand { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
@@ -49,25 +49,27 @@ h2 { font-size: clamp(38px, 5.2vw, 72px); }
 .nav-links a { text-decoration: none; font-size: 15px; font-weight: 500; opacity: .85; }
 .nav-links a:hover, .nav-links a[aria-current="page"] { opacity: 1; text-decoration: underline; text-underline-offset: 6px; }
 .nav .btn { height: 44px; padding: 0 20px; font-size: 15px; }
-.nav:not(.solid):not(.light) .btn-main { background: #fff; color: var(--ink); }
 
-/* ---------- Hero ---------- */
-.hero { position: relative; min-height: 100dvh; display: flex; align-items: flex-end; color: #fff; overflow: clip; }
-.hero-img { position: absolute; inset: 0; background: #3a3631; }
-.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 30%; }
-/* Escurece a esquerda e a base para o texto ficar legível sobre a foto */
-.hero::after { content: ""; position: absolute; inset: 0; background:
-  linear-gradient(180deg, rgb(10 12 18 / .4) 0%, rgb(10 12 18 / 0) 22%),
-  linear-gradient(90deg, rgb(10 12 18 / .7) 0%, rgb(10 12 18 / .35) 42%, rgb(10 12 18 / 0) 68%),
-  linear-gradient(0deg, rgb(10 12 18 / .55) 0%, rgb(10 12 18 / 0) 45%); }
-.hero-text { position: relative; z-index: 1; padding-bottom: 56px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
-.hero h1 { font-size: clamp(44px, 5.6vw, 88px); max-width: 13ch; text-shadow: 0 2px 30px rgb(0 0 0 / .25); }
-.hero p { font-size: 19px; max-width: 40ch; margin: 22px 0 30px; opacity: .94; }
+/* ---------- Hero ----------
+   Foto de fundo branco com o rosto à direita; o texto escuro fica no espaço branco da esquerda. */
+.hero { position: relative; min-height: 100dvh; display: flex; align-items: flex-end; color: var(--ink); background: var(--bg); overflow: clip; }
+.hero-img { position: absolute; inset: 0; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 78% 30%;
+  /* Tira o brilho exagerado de foto gerada: menos saturação e contraste, luz um pouco mais quente */
+  filter: saturate(.86) contrast(.93) brightness(.985) sepia(.07); }
+/* Luz de janela vinda do alto, suave e quente */
+.hero-img::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; mix-blend-mode: soft-light;
+  background: radial-gradient(ellipse at 80% 10%, rgb(255 236 210 / .55), rgb(255 236 210 / 0) 55%), radial-gradient(ellipse at 100% 100%, rgb(60 50 40 / .25), rgb(60 50 40 / 0) 50%); }
+/* Grão leve de câmera para a pele não parecer lisa demais */
+.hero-img::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .14; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(245 245 243 / .94) 0%, rgb(245 245 243 / .6) 34%, rgb(245 245 243 / 0) 54%); }
+.hero-text { position: relative; z-index: 1; padding-bottom: 56px; display: grid; gap: 28px; }
+.hero h1 { font-size: clamp(44px, 5.6vw, 88px); max-width: 13ch; }
+.hero p { font-size: 19px; max-width: 40ch; margin: 22px 0 30px; color: var(--ink-2); }
 .hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-.hero .btn-ghost:hover { background: #fff; color: var(--ink); border-color: #fff; }
-.google { text-align: right; font-size: 15px; line-height: 1.35; }
-.google b { display: block; font-family: var(--display); font-stretch: 112%; font-size: 56px; font-weight: 800; letter-spacing: -.04em; line-height: 1; }
-.google span { opacity: .88; }
+.google { display: flex; align-items: baseline; gap: 12px; font-size: 15px; line-height: 1.35; color: var(--ink-2); }
+.google b { font-family: var(--display); font-stretch: 112%; font-size: 40px; font-weight: 800; letter-spacing: -.04em; line-height: 1; color: var(--ink); }
 
 section { padding: 128px 0; }
 
@@ -242,10 +244,7 @@ dialog::backdrop { background: rgb(12 14 20 / .55); }
 @media (max-width: 1024px) {
   .nav-links { display: none; }
   .nav .btn { margin-left: auto; }
-  .hero-text { grid-template-columns: 1fr; }
-  .google { text-align: left; display: flex; align-items: baseline; gap: 12px; }
-  .google b { font-size: 40px; }
-  .hero-img img { object-position: 72% 25%; }
+  .hero-img img { object-position: 76% 30%; }
   .ba-grid, .visit-grid, .pay-grid { grid-template-columns: 1fr; gap: 40px; }
   .team-row { grid-template-columns: repeat(2, 1fr); }
   .treat-layout { grid-template-columns: 1fr; }
@@ -270,11 +269,10 @@ dialog::backdrop { background: rgb(12 14 20 / .55); }
   .hero p { font-size: 17px; }
   .hero-text { padding-bottom: 32px; gap: 20px; }
   .hero h1 { font-size: 42px; }
-  /* No celular a foto fica na parte de cima e o texto embaixo, sobre um fundo escuro que nasce da foto */
-  .hero { background: #1d1b1a; }
-  .hero-img { bottom: 36%; }
-  .hero-img img { object-position: 72% 20%; }
-  .hero::after { background: linear-gradient(180deg, rgb(10 12 18 / .35) 0%, rgb(10 12 18 / 0) 14%, rgb(29 27 26 / 0) 40%, #1d1b1a 64%); }
+  /* No celular a foto fica na parte de cima e o texto embaixo, sobre o branco que continua o fundo da foto */
+  .hero-img { bottom: 38%; }
+  .hero-img img { object-position: 76% 30%; }
+  .hero::after { background: linear-gradient(180deg, rgb(245 245 243 / 0) 42%, var(--bg) 62%); }
   .hero .ctas .btn { flex: 1 1 100%; }
   .promises { grid-template-columns: 1fr; gap: 0; margin-top: 36px; }
   .promises > div { padding: 18px 0; border-bottom: 1px solid var(--line); }
