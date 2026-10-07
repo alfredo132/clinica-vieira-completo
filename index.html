@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lume Odontologia | Dentista sem susto</title>
+<meta name="description" content="Clínica odontológica com avaliação sem compromisso, simulador de tratamento e agendamento direto pelo WhatsApp.">
+<meta name="theme-color" content="#f3f5f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1513" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1777331903190-341a3dd0441b?w=1400&q=80">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+  /* Formas: botões e chips em pílula, cartões e fotos com 20px, campos com 12px. */
+  :root {
+    --bg: #f3f5f4;
+    --surface: #ffffff;
+    --surface-2: #e8eeeb;
+    --ink: #13201c;
+    --muted: #56665f;
+    --line: #d6dfdb;
+    --accent: #1d6b5a;
+    --accent-ink: #ffffff;
+    --accent-soft: #dbeae4;
+    --shadow: 0 18px 50px rgb(19 54 45 / .12);
+    --display: "Bricolage Grotesque", "Figtree", sans-serif;
+    --body: "Figtree", system-ui, sans-serif;
+    --ease: cubic-bezier(.16, 1, .3, 1);
+    --r: 20px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1513;
+      --surface: #151e1b;
+      --surface-2: #1b2723;
+      --ink: #e7eeeb;
+      --muted: #97a8a1;
+      --line: #27342f;
+      --accent: #5cc2a6;
+      --accent-ink: #06231b;
+      --accent-soft: #163129;
+      --shadow: 0 18px 50px rgb(0 0 0 / .45);
+      color-scheme: dark;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 84px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  img { display: block; max-width: 100%; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  .wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 700; letter-spacing: -.02em; line-height: 1.08; }
+  h2 { font-size: clamp(34px, 4.2vw, 52px); }
+  .lead { color: var(--muted); font-size: 18px; max-width: 58ch; }
+  section { padding: 104px 0; }
+
+  /* ---------- Botões ---------- */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 54px; padding: 0 26px; border-radius: 999px; font-weight: 700; font-size: 16px; text-decoration: none; white-space: nowrap; transition: transform .2s var(--ease), background-color .2s, box-shadow .2s; }
+  .btn i { font-size: 20px; }
+  .btn:active { transform: scale(.97); }
+  .btn-main { background: var(--accent); color: var(--accent-ink); box-shadow: 0 8px 24px rgb(29 107 90 / .25); }
+  .btn-main:hover { box-shadow: 0 12px 30px rgb(29 107 90 / .35); transform: translateY(-1px); }
+  .btn-line { border: 1.5px solid var(--line); background: var(--surface); }
+  .btn-line:hover { border-color: var(--accent); }
+  .btn[disabled] { opacity: .45; cursor: not-allowed; box-shadow: none; transform: none; }
+
+  /* ---------- Navegação ---------- */
+  .nav { position: sticky; top: 0; z-index: 20; height: 72px; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+  .nav.solid { border-color: var(--line); }
+  .nav .wrap { height: 100%; display: flex; align-items: center; gap: 32px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 800; font-size: 21px; text-decoration: none; letter-spacing: -.02em; }
+  .brand svg { width: 32px; height: 32px; }
+  .nav-links { display: flex; gap: 28px; margin-left: auto; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; transition: color .2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav .btn { height: 44px; padding: 0 20px; font-size: 15px; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 40px 0 72px; }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; min-height: min(calc(100dvh - 140px), 680px); }
+  .hero h1 { font-size: clamp(42px, 5.4vw, 70px); max-width: 13ch; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero .lead { margin: 22px 0 34px; font-size: 19px; max-width: 44ch; }
+  .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-photo { border-radius: var(--r); overflow: hidden; aspect-ratio: 4 / 4.6; box-shadow: var(--shadow); background: var(--surface-2); }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- Convênios ---------- */
+  .plans { padding: 0 0 24px; }
+  .plans .wrap { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; padding-top: 28px; border-top: 1px solid var(--line); }
+  .plans strong { font-weight: 600; color: var(--muted); font-size: 15px; margin-right: 4px; }
+  .plans ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
+  .plans li { padding: 7px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; font-weight: 600; }
+
+  /* ---------- Simulador ---------- */
+  .sim-head { max-width: 640px; margin-bottom: 48px; }
+  .sim-head .lead { margin-top: 14px; }
+  .sim-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 32px; align-items: start; }
+  .concerns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .concern { display: flex; align-items: center; gap: 14px; text-align: left; padding: 20px; border-radius: var(--r); background: var(--surface); border: 1.5px solid var(--line); font-weight: 600; font-size: 17px; line-height: 1.3; transition: border-color .2s, background-color .2s, transform .2s var(--ease); }
+  .concern:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+  .concern:active { transform: scale(.98); }
+  .concern i { flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; background: var(--accent-soft); color: var(--accent); font-size: 24px; transition: background-color .2s, color .2s; }
+  .concern[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+  .concern[aria-pressed="true"] i { background: var(--accent); color: var(--accent-ink); }
+  .result { position: sticky; top: 96px; padding: 32px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); min-height: 420px; display: flex; flex-direction: column; }
+  .result-empty { margin: auto; text-align: center; color: var(--muted); max-width: 30ch; }
+  .result-empty i { font-size: 44px; color: var(--accent); display: block; margin: 0 auto 12px; }
+  .result-body { display: flex; flex-direction: column; gap: 18px; flex: 1; }
+  .result-body.swap { animation: swap .45s var(--ease); }
+  @keyframes swap { from { opacity: 0; transform: translateY(10px); } }
+  .result small { color: var(--accent); font-weight: 700; font-size: 14px; }
+  .result h3 { font-size: 32px; margin-top: 4px; }
+  .result p { color: var(--muted); }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .facts div { padding: 14px 16px; border-radius: 14px; background: var(--surface-2); }
+  .facts span { display: block; font-size: 13px; color: var(--muted); }
+  .facts b { font-weight: 700; font-size: 15px; line-height: 1.35; display: block; margin-top: 2px; }
+  .price { display: flex; align-items: baseline; gap: 8px; margin-top: auto; padding-top: 8px; }
+  .price span { color: var(--muted); font-size: 15px; }
+  .price b { font-family: var(--display); font-size: 40px; letter-spacing: -.02em; line-height: 1; }
+  .price em { font-style: normal; color: var(--muted); font-size: 15px; }
+  .result .note { font-size: 14px; }
+  .result .btn { width: 100%; }
+
+  /* ---------- Antes e depois ---------- */
+  .ba { background: var(--surface); border-block: 1px solid var(--line); }
+  .ba-head { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; max-width: 640px; }
+  .compare { position: relative; border-radius: var(--r); overflow: hidden; aspect-ratio: 16 / 8; max-height: 600px; width: 100%; user-select: none; -webkit-user-select: none; touch-action: pan-y; background: var(--surface-2); cursor: ew-resize; --pos: 58%; }
+  .compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; pointer-events: none; }
+  .compare .before { filter: sepia(.85) saturate(1.7) brightness(.86) hue-rotate(-4deg); clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+  .compare .handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; margin-left: -1.5px; background: #fff; pointer-events: none; }
+  .compare .handle i { position: absolute; top: 50%; left: 50%; translate: -50% -50%; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 999px; background: #fff; color: #13201c; font-size: 24px; box-shadow: 0 6px 20px rgb(0 0 0 / .25); }
+  .compare input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+  .compare input:focus-visible + .handle i { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .ba-legend { display: flex; justify-content: space-between; margin-top: 14px; color: var(--muted); font-size: 15px; font-weight: 600; }
+
+  /* ---------- Sem medo ---------- */
+  .calm-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; align-items: center; }
+  .calm-photo { border-radius: var(--r); overflow: hidden; aspect-ratio: 4 / 5; background: var(--surface-2); }
+  .calm-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .calm .lead { margin: 18px 0 36px; }
+  .calm-list { list-style: none; display: grid; gap: 26px; }
+  .calm-list li { display: grid; grid-template-columns: 48px 1fr; gap: 18px; }
+  .calm-list i { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: var(--accent-soft); color: var(--accent); font-size: 24px; }
+  .calm-list h3 { font-size: 21px; margin-bottom: 4px; letter-spacing: -.01em; }
+  .calm-list p { color: var(--muted); }
+
+  /* ---------- Depoimentos ---------- */
+  .voices { padding-top: 0; }
+  .voices-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; }
+  .voice { padding: 32px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 22px; }
+  .voice blockquote { font-size: 19px; line-height: 1.5; }
+  .voice.big { background: var(--accent); color: var(--accent-ink); border: 0; justify-content: space-between; }
+  .voice.big blockquote { font-family: var(--display); font-size: clamp(26px, 2.6vw, 34px); font-weight: 600; letter-spacing: -.015em; line-height: 1.25; }
+  .voice footer { font-size: 15px; }
+  .voice footer b { display: block; font-weight: 700; }
+  .voice footer span { opacity: .75; }
+  .voices-side { display: grid; gap: 20px; }
+  .voices-note { margin-top: 14px; color: var(--muted); font-size: 14px; }
+
+  /* ---------- Onde estamos ---------- */
+  .where { padding-top: 0; }
+  .where-box { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--r); overflow: hidden; background: var(--surface); border: 1px solid var(--line); }
+  .where-info { padding: 52px; display: flex; flex-direction: column; gap: 28px; }
+  .where-info dl { display: grid; gap: 18px; }
+  .where-info dl div { display: grid; grid-template-columns: 28px 1fr; gap: 12px; }
+  .where-info dt { color: var(--accent); font-size: 22px; line-height: 1.2; }
+  .where-info dd b { display: block; font-weight: 700; }
+  .where-info dd span { color: var(--muted); }
+  .where-photo { min-height: 420px; background: var(--surface-2); }
+  .where-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+  footer.site { padding: 40px 0 120px; color: var(--muted); font-size: 14px; }
+  footer.site .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 28px; }
+
+  /* ---------- Barra fixa no celular ---------- */
+  .bar { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 15; display: none; translate: 0 140%; transition: translate .45s var(--ease); }
+  .bar.show { translate: 0 0; }
+  .bar .btn { width: 100%; }
+
+  /* ---------- Agendamento ---------- */
+  dialog.book { margin: auto; width: min(560px, calc(100% - 32px)); max-height: min(88dvh, 820px); border: 0; border-radius: 24px; padding: 0; background: var(--surface); color: var(--ink); box-shadow: 0 30px 80px rgb(0 0 0 / .35); overflow: hidden; }
+  dialog.book[open] { display: flex; flex-direction: column; animation: rise .45s var(--ease); }
+  dialog.book::backdrop { background: rgb(8 16 13 / .55); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+  @keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+  .book-head { display: flex; justify-content: space-between; align-items: start; gap: 16px; padding: 26px 28px 8px; }
+  .book-head h2 { font-size: 30px; }
+  .book-head p { color: var(--muted); font-size: 15px; margin-top: 4px; }
+  .x { flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 999px; background: var(--surface-2); font-size: 20px; }
+  .book-body { overflow-y: auto; padding: 12px 28px 8px; display: grid; gap: 24px; overscroll-behavior: contain; }
+  .q h3 { font-family: var(--body); font-weight: 700; font-size: 16px; letter-spacing: 0; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .q h3 i { color: var(--accent); font-size: 20px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { padding: 10px 16px; border-radius: 999px; border: 1.5px solid var(--line); font-weight: 600; font-size: 15px; transition: border-color .2s, background-color .2s, transform .15s var(--ease); }
+  .chip:hover { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+  .chip:active { transform: scale(.96); }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .field { display: grid; gap: 8px; }
+  .field label { font-weight: 700; font-size: 16px; }
+  .field label span { font-weight: 500; color: var(--muted); }
+  .field input { height: 50px; padding: 0 16px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--bg); color: var(--ink); font: inherit; }
+  .field input::placeholder { color: var(--muted); }
+  .field input:focus { outline: none; border-color: var(--accent); }
+  .preview { padding: 16px 18px; border-radius: 16px 16px 16px 4px; background: var(--accent-soft); font-size: 15px; white-space: pre-line; }
+  .preview-label { font-size: 13px; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
+  .book-foot { padding: 16px 28px 24px; border-top: 1px solid var(--line); display: grid; gap: 8px; }
+  .book-foot .btn { width: 100%; }
+  .book-foot .hint { text-align: center; color: var(--muted); font-size: 14px; min-height: 1.6em; }
+
+  /* ---------- Revelar ao rolar ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .js .rv { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--d, 0) * 80ms); }
+    .js .rv.in { opacity: 1; transform: none; }
+    .hero-photo img { animation: settle 1.6s var(--ease) both; }
+    @keyframes settle { from { transform: scale(1.08); } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    dialog.book[open], .result-body.swap { animation: none; }
+  }
+
+  /* ---------- Responsivo ---------- */
+  @media (max-width: 1024px) {
+    .nav-links { display: none; }
+    .nav .btn { margin-left: auto; }
+    .hero-grid, .sim-grid, .calm-grid, .voices-grid, .where-box { grid-template-columns: 1fr; }
+    .hero-grid { min-height: 0; gap: 40px; }
+    .hero-photo { aspect-ratio: 16 / 11; }
+    .result { position: static; min-height: 0; }
+    .calm-grid { gap: 40px; }
+    .calm-photo { aspect-ratio: 16 / 10; }
+    .where-photo { min-height: 280px; order: -1; }
+  }
+  @media (max-width: 767px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 16px; }
+    section { padding: 72px 0; }
+    .nav { height: 64px; }
+    .nav .btn { display: none; }
+    .hero { padding: 24px 0 48px; }
+    .hero .lead { font-size: 17px; }
+    .ctas .btn { flex: 1 1 100%; }
+    .concerns { grid-template-columns: 1fr; }
+    .concern { padding: 16px; }
+    .result { padding: 24px; }
+    .compare { aspect-ratio: 4 / 3; }
+    .where-info { padding: 32px 24px; }
+    .voice { padding: 26px; }
+    .bar { display: block; }
+    dialog.book { width: 100%; max-width: none; max-height: 92dvh; margin: auto 0 0; border-radius: 24px 24px 0 0; }
+    .book-head, .book-body, .book-foot { padding-left: 20px; padding-right: 20px; }
+  }
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add("js")</script>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#topo" aria-label="Lume Odontologia, início">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="10" fill="var(--accent)"/><path d="M11 8v16h10" stroke="var(--accent-ink)" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Lume
+    </a>
+    <ul class="nav-links">
+      <li><a href="#simulador">Simulador</a></li>
+      <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#sem-medo">Sem medo</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <button class="btn btn-main" data-book><i class="ph-bold ph-whatsapp-logo"></i>Agendar avaliação</button>
+  </div>
+</header>
+
+<main id="topo">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 class="rv">Dentista sem susto, do jeito que <em>devia ser.</em></h1>
+        <p class="lead rv" style="--d:1">Avaliação sem compromisso, tudo explicado antes de começar e agendamento direto pelo WhatsApp.</p>
+        <div class="ctas rv" style="--d:2" id="hero-ctas">
+          <button class="btn btn-main" data-book><i class="ph-bold ph-whatsapp-logo"></i>Agendar avaliação</button>
+          <a class="btn btn-line" href="#simulador"><i class="ph ph-magic-wand"></i>Simular tratamento</a>
+        </div>
+      </div>
+      <div class="hero-photo rv" style="--d:1">
+        <img src="https://images.unsplash.com/photo-1777331903190-341a3dd0441b?w=1400&q=80" alt="Dentista conversando com a paciente antes do atendimento" fetchpriority="high">
+      </div>
+    </div>
+  </section>
+
+  <div class="plans">
+    <div class="wrap">
+      <strong>Convênios aceitos</strong>
+      <ul id="plans-list"></ul>
+    </div>
+  </div>
+
+  <section id="simulador">
+    <div class="wrap">
+      <div class="sim-head rv">
+        <h2>O que está te incomodando?</h2>
+        <p class="lead">Toque na opção que mais parece com o seu caso e veja o tratamento indicado, quanto tempo leva e o valor inicial.</p>
+      </div>
+      <div class="sim-grid">
+        <div class="concerns" id="concerns"></div>
+        <div class="result rv" id="result" aria-live="polite">
+          <div class="result-empty">
+            <i class="ph-duotone ph-hand-tap"></i>
+            Escolha uma opção para ver o tratamento indicado e o valor inicial.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ba" id="resultados">
+    <div class="wrap">
+      <div class="ba-head rv">
+        <h2>Arraste e veja a diferença.</h2>
+        <p class="lead">Clareamento em consultório com acabamento em casa. Resultado em cerca de duas semanas.</p>
+      </div>
+      <div class="compare rv" id="compare">
+        <img src="https://images.unsplash.com/photo-1677026010083-78ec7f1b84ed?w=1600&amp;h=800&amp;fit=crop&amp;crop=focalpoint&amp;fp-x=.7&amp;fp-y=.46&amp;fp-z=1.35&amp;q=80" alt="Sorriso depois do clareamento" loading="lazy">
+        <img class="before" src="https://images.unsplash.com/photo-1677026010083-78ec7f1b84ed?w=1600&amp;h=800&amp;fit=crop&amp;crop=focalpoint&amp;fp-x=.7&amp;fp-y=.46&amp;fp-z=1.35&amp;q=80" alt="" aria-hidden="true" loading="lazy">
+        <input type="range" min="0" max="100" value="58" aria-label="Comparar antes e depois do clareamento">
+        <div class="handle"><i class="ph-bold ph-arrows-left-right"></i></div>
+      </div>
+      <div class="ba-legend"><span>Antes</span><span>Simulação ilustrativa</span><span>Depois</span></div>
+    </div>
+  </section>
+
+  <section class="calm" id="sem-medo">
+    <div class="wrap calm-grid">
+      <div class="calm-photo rv">
+        <img src="https://images.unsplash.com/photo-1776886099265-6366478b341b?w=1200&q=80" alt="Sala de espera clara, com cadeiras brancas e plantas" loading="lazy">
+      </div>
+      <div>
+        <h2 class="rv">Tem medo de dentista? A gente entende.</h2>
+        <p class="lead rv" style="--d:1">Muita gente adia a consulta por anos por causa disso. Aqui o atendimento foi pensado para quem chega com o coração na mão.</p>
+        <ul class="calm-list">
+          <li class="rv" style="--d:2"><i class="ph ph-chat-circle-text"></i><div><h3>Nada acontece sem explicação</h3><p>Antes de cada etapa, você sabe o que vai ser feito e quanto tempo leva.</p></div></li>
+          <li class="rv" style="--d:3"><i class="ph ph-hand-palm"></i><div><h3>Você pode pedir pausa</h3><p>Levantou a mão, a gente para. Sem pressa e sem julgamento.</p></div></li>
+          <li class="rv" style="--d:4"><i class="ph ph-drop"></i><div><h3>Anestesia sem a picada</h3><p>Gel anestésico antes da agulha e sedação leve para os casos de mais ansiedade.</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="voices">
+    <div class="wrap">
+      <div class="voices-grid">
+        <figure class="voice big rv">
+          <blockquote>“Fiquei seis anos sem ir ao dentista por medo. Aqui me explicaram tudo antes e eu nem senti a anestesia.”</blockquote>
+          <footer><b>Juliana Paiva</b><span>Paciente desde 2024</span></footer>
+        </figure>
+        <div class="voices-side">
+          <figure class="voice rv" style="--d:1">
+            <blockquote>“Marquei pelo WhatsApp em dois minutos e já sabia o valor antes de sair de casa.”</blockquote>
+            <footer><b>Rodrigo Siqueira</b><span>Implante</span></footer>
+          </figure>
+          <figure class="voice rv" style="--d:2">
+            <blockquote>“Meu filho de 7 anos saiu pedindo para voltar. Nunca imaginei ouvir isso.”</blockquote>
+            <footer><b>Camila Bastos</b><span>Mãe do Theo</span></footer>
+          </figure>
+        </div>
+      </div>
+      <p class="voices-note">Depoimentos fictícios para demonstração.</p>
+    </div>
+  </section>
+
+  <section class="where" id="contato">
+    <div class="wrap">
+      <div class="where-box rv">
+        <div class="where-info">
+          <h2>Venha conhecer a clínica.</h2>
+          <dl>
+            <div><dt><i class="ph ph-map-pin"></i></dt><dd><b>Rua das Acácias, 418, sala 3</b><span>Centro, a duas quadras da praça</span></dd></div>
+            <div><dt><i class="ph ph-clock"></i></dt><dd><b>Segunda a sexta, das 8h às 20h</b><span>Sábado, das 8h às 13h</span></dd></div>
+            <div><dt><i class="ph ph-car"></i></dt><dd><b>Estacionamento conveniado</b><span>Primeira hora por nossa conta</span></dd></div>
+          </dl>
+          <div class="ctas">
+            <button class="btn btn-main" data-book><i class="ph-bold ph-whatsapp-logo"></i>Agendar avaliação</button>
+            <a class="btn btn-line" href="https://maps.google.com/?q=Rua+das+Acacias+418" target="_blank" rel="noopener"><i class="ph ph-navigation-arrow"></i>Ver no mapa</a>
+          </div>
+        </div>
+        <div class="where-photo">
+          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=80" alt="Consultório com cadeira odontológica e equipamentos" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Lume Odontologia. Responsável técnico: Dra. Helena Moura, CRO 00000.</span>
+    <span>Marca, profissionais, endereço e preços fictícios para demonstração.</span>
+  </div>
+</footer>
+
+<div class="bar" id="bar">
+  <button class="btn btn-main" data-book><i class="ph-bold ph-whatsapp-logo"></i>Agendar avaliação</button>
+</div>
+
+<dialog class="book" id="book" aria-labelledby="book-title">
+  <div class="book-head">
+    <div>
+      <h2 id="book-title">Agendar avaliação</h2>
+      <p>Três escolhas e a mensagem chega pronta no nosso WhatsApp.</p>
+    </div>
+    <button class="x" data-close aria-label="Fechar"><i class="ph-bold ph-x"></i></button>
+  </div>
+  <div class="book-body">
+    <div class="q"><h3><i class="ph ph-tooth"></i>O que você precisa?</h3><div class="chips" data-q="treat"></div></div>
+    <div class="q"><h3><i class="ph ph-calendar-blank"></i>Melhor período</h3><div class="chips" data-q="time"></div></div>
+    <div class="q"><h3><i class="ph ph-identification-card"></i>Convênio</h3><div class="chips" data-q="plan"></div></div>
+    <div class="field">
+      <label for="book-name">Seu nome <span>(opcional)</span></label>
+      <input id="book-name" type="text" autocomplete="given-name" placeholder="Como podemos te chamar?">
+    </div>
+    <div>
+      <p class="preview-label">Mensagem que vai ser enviada</p>
+      <div class="preview" id="preview"></div>
+    </div>
+  </div>
+  <div class="book-foot">
+    <button class="btn btn-main" id="send" disabled><i class="ph-bold ph-whatsapp-logo"></i>Enviar pelo WhatsApp</button>
+    <p class="hint" id="hint"></p>
+  </div>
+</dialog>
+
+<script>
+  /* Troque pelo número da clínica, com DDI e DDD, só números. */
+  const WHATSAPP = "5500000000000";
+  const brl = v => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+  const $ = s => document.querySelector(s);
+  const $$ = s => [...document.querySelectorAll(s)];
+  const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const PLANS = ["Particular", "Amil Dental", "Bradesco Dental", "SulAmérica Odonto", "OdontoPrev", "Porto Seguro Odonto", "MetLife"];
+  $("#plans-list").innerHTML = PLANS.slice(1).map(p => `<li>${p}</li>`).join("");
+
+  /* ---------- Simulador ---------- */
+  const CONCERNS = [
+    { id: "cor", icon: "ph-sun", label: "Dentes amarelados", treat: "Clareamento", name: "Clareamento dental",
+      desc: "Uma sessão no consultório e acabamento em casa com moldeira feita sob medida.", time: "Cerca de 2 semanas", visits: "2 consultas", price: 690 },
+    { id: "falta", icon: "ph-tooth", label: "Dente faltando", treat: "Implante", name: "Implante dentário",
+      desc: "Pino de titânio com coroa de porcelana. Fica firme e com a cor dos outros dentes.", time: "3 a 6 meses", visits: "3 a 4 consultas", price: 2900, per: "por dente" },
+    { id: "torto", icon: "ph-arrows-in-line-horizontal", label: "Dentes tortos", treat: "Aparelho ou alinhador", name: "Alinhadores ou aparelho",
+      desc: "Alinhadores transparentes ou aparelho fixo, conforme o caso e o seu orçamento.", time: "12 a 24 meses", visits: "Revisão mensal", price: 180, per: "por mês" },
+    { id: "dor", icon: "ph-lightning", label: "Dor ou sensibilidade", treat: "Dor ou canal", name: "Canal ou restauração",
+      desc: "Primeiro aliviamos a dor. Depois tratamos a causa, seja cárie, trinca ou canal.", time: "1 a 3 semanas", visits: "1 a 3 consultas", price: 220 },
+    { id: "forma", icon: "ph-smiley", label: "Quero mudar o sorriso", treat: "Lentes de contato", name: "Lentes de contato dental",
+      desc: "Lâminas finas de porcelana que corrigem cor, tamanho e formato dos dentes.", time: "3 a 4 semanas", visits: "3 a 4 consultas", price: 1400, per: "por dente" },
+    { id: "check", icon: "ph-first-aid-kit", label: "Só um check-up", treat: "Limpeza e check-up", name: "Check-up com limpeza",
+      desc: "Avaliação completa, raio-x se precisar e limpeza para tirar o tártaro.", time: "Uma visita", visits: "Cerca de 50 min", price: 160 },
+  ];
+  $("#concerns").innerHTML = CONCERNS.map((c, i) => `
+    <button class="concern rv" style="--d:${i % 2}" data-c="${c.id}" aria-pressed="false"><i class="ph ${c.icon}"></i>${c.label}</button>`).join("");
+
+  $("#concerns").addEventListener("click", e => {
+    const b = e.target.closest(".concern"); if (!b) return;
+    const c = CONCERNS.find(x => x.id === b.dataset.c);
+    $$(".concern").forEach(x => x.setAttribute("aria-pressed", x === b));
+    $("#result").innerHTML = `
+      <div class="result-body swap">
+        <div><small>Tratamento indicado</small><h3>${c.name}</h3></div>
+        <p>${c.desc}</p>
+        <div class="facts">
+          <div><span>Duração</span><b>${c.time}</b></div>
+          <div><span>Consultas</span><b>${c.visits}</b></div>
+        </div>
+        <div class="price"><span>a partir de</span><b>${brl(c.price)}</b>${c.per ? `<em>${c.per}</em>` : ""}</div>
+        <p class="note">O valor final é definido na avaliação, que não tem compromisso.</p>
+        <button class="btn btn-main" data-book="${c.treat}"><i class="ph-bold ph-whatsapp-logo"></i>Agendar avaliação</button>
+      </div>`;
+    // No celular o resultado fica abaixo das opções, então levamos a pessoa até ele
+    if (matchMedia("(max-width: 1024px)").matches) $("#result").scrollIntoView({ behavior: REDUCE ? "auto" : "smooth", block: "nearest" });
+  });
+
+  /* ---------- Antes e depois ---------- */
+  const compare = $("#compare"), range = compare.querySelector("input");
+  const setPos = v => { v = Math.max(0, Math.min(100, v)); compare.style.setProperty("--pos", v + "%"); range.value = v; };
+  range.addEventListener("input", () => setPos(+range.value));
+  let dragging = false;
+  const fromPointer = e => { const r = compare.getBoundingClientRect(); setPos((e.clientX - r.left) / r.width * 100); };
+  compare.addEventListener("pointerdown", e => { dragging = true; compare.setPointerCapture(e.pointerId); fromPointer(e); });
+  compare.addEventListener("pointermove", e => dragging && fromPointer(e));
+  compare.addEventListener("pointerup", () => dragging = false);
+  compare.addEventListener("pointercancel", () => dragging = false);
+
+  /* ---------- Agendamento ---------- */
+  const OPTIONS = {
+    treat: ["Avaliação geral", ...CONCERNS.map(c => c.treat)],
+    time: ["Manhã", "Tarde", "Noite", "Sábado"],
+    plan: [...PLANS, "Outro"],
+  };
+  const MISSING = { treat: "o que você precisa", time: "o melhor período", plan: "o convênio" };
+  const pick = { treat: null, time: null, plan: null };
+  $$("[data-q]").forEach(box => {
+    box.innerHTML = OPTIONS[box.dataset.q].map(o => `<button class="chip" data-v="${o}" aria-pressed="false">${o}</button>`).join("");
+  });
+  const book = $("#book"), nameInput = $("#book-name");
+
+  function message() {
+    const n = nameInput.value.trim();
+    return [
+      `Olá! Vim pelo site e quero agendar uma avaliação.`,
+      `Tratamento: *${pick.treat || "..."}*`,
+      `Melhor período: *${pick.time || "..."}*`,
+      `Convênio: *${pick.plan || "..."}*`,
+      n && `Nome: *${n}*`,
+    ].filter(Boolean).join("\n");
+  }
+  function renderBook() {
+    $$("[data-q]").forEach(box => box.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.v === pick[box.dataset.q])));
+    $("#preview").textContent = message();
+    const missing = Object.keys(pick).filter(k => !pick[k]);
+    $("#send").disabled = missing.length > 0;
+    $("#hint").textContent = missing.length ? `Falta escolher ${missing.map(k => MISSING[k]).join(", ").replace(/, ([^,]*)$/, " e $1")}.` : "Abre o WhatsApp com a mensagem pronta.";
+  }
+  function openBook(treat) {
+    if (treat) pick.treat = treat;
+    renderBook();
+    book.showModal();
+  }
+  $$("[data-q]").forEach(box => box.addEventListener("click", e => {
+    const c = e.target.closest(".chip"); if (!c) return;
+    pick[box.dataset.q] = c.dataset.v;
+    renderBook();
+  }));
+  nameInput.addEventListener("input", renderBook);
+  // Botões de agendar podem ser criados depois (ex.: no resultado do simulador), por isso a delegação no documento
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-book]");
+    if (b) openBook(b.dataset.book || null);
+  });
+  $("[data-close]").addEventListener("click", () => book.close());
+  book.addEventListener("click", e => { if (e.target === book) book.close(); });
+  $("#send").addEventListener("click", () => {
+    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message())}`, "_blank", "noopener");
+  });
+
+  /* ---------- Navegação e revelar ao rolar ---------- */
+  new IntersectionObserver(([e]) => $("#nav").classList.toggle("solid", !e.isIntersecting)).observe($(".hero h1"));
+  // A barra fixa só aparece depois do hero e some quando outro botão de agendar já está na tela
+  const visibleCtas = new Set();
+  let pastHero = false;
+  const syncBar = () => $("#bar").classList.toggle("show", pastHero && visibleCtas.size === 0);
+  new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; syncBar(); }).observe($("#hero-ctas"));
+  const ctaIO = new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? visibleCtas.add(e.target) : visibleCtas.delete(e.target)); syncBar(); });
+  [$("#result"), $(".where-info .ctas")].forEach(el => ctaIO.observe(el));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+  $$(".rv").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
