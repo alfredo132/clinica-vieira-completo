@@ -159,8 +159,12 @@
           <a class="btn btn-ghost" href="https://maps.google.com/?q=Rua+Fernandes+Tourinho+470+Savassi+Belo+Horizonte" target="_blank" rel="noopener"><i class="ph ph-map-trifold"></i>Abrir no mapa</a>
         </div>
       </div>
-      <div class="visit-photo rv" style="--d:1">
-        <img src="https://images.unsplash.com/photo-1776886099265-6366478b341b?w=1100&q=80" alt="Sala de espera clara com cadeiras brancas e plantas" loading="lazy">
+      <div class="gallery rv" style="--d:1" id="gallery" aria-roledescription="carrossel" aria-label="Fotos da clínica">
+        <div class="slides" id="slides"></div>
+        <div class="gallery-bar">
+          <p class="gallery-cap" id="gallery-cap" aria-live="polite"></p>
+          <div class="dots" id="dots"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -281,6 +285,42 @@
   $$("[data-scroll]").forEach(b => b.addEventListener("click", () => {
     track.scrollBy({ left: +b.dataset.scroll * track.clientWidth * .8, behavior: REDUCE ? "auto" : "smooth" });
   }));
+
+  /* ---------- Fotos da clínica ---------- */
+  const PHOTOS = [
+    { id: "1721045028160-3637f5063047", cap: "Recepção", alt: "Recepção com balcão de madeira e luminárias pendentes" },
+    { id: "1776886099265-6366478b341b", cap: "Sala de espera", alt: "Sala de espera clara com cadeiras brancas e plantas" },
+    { id: "1704455306925-1401c3012117", cap: "Consultório", alt: "Consultório com cadeira odontológica e equipamentos" },
+    { id: "1771270731007-5998fa136d12", cap: "Sala de conversa, onde explicamos o tratamento", alt: "Sala com poltronas e parede de madeira" },
+  ];
+  const SLIDE_MS = 5000;
+  $("#slides").innerHTML = PHOTOS.map((p, i) => `
+    <figure class="slide${i === 0 ? " is-on" : ""}" aria-hidden="${i !== 0}"><img src="${IMG(p.id, "w=1100&h=1375&fit=crop")}" alt="${p.alt}" ${i ? 'loading="lazy"' : ""}></figure>`).join("");
+  $("#dots").innerHTML = PHOTOS.map((p, i) => `<button aria-label="Ver foto: ${p.cap}" data-slide="${i}"><span></span></button>`).join("");
+  const slides = $$(".slide"), dots = $$("#dots button");
+  let current = 0, timer = null, galleryVisible = false;
+  function show(i) {
+    current = (i + PHOTOS.length) % PHOTOS.length;
+    slides.forEach((s, k) => { s.classList.toggle("is-on", k === current); s.setAttribute("aria-hidden", k !== current); });
+    dots.forEach((d, k) => { d.classList.toggle("is-on", k === current); d.setAttribute("aria-current", k === current); });
+    $("#gallery-cap").textContent = PHOTOS[current].cap;
+  }
+  // Troca sozinha só quando a galeria está na tela, a aba está aberta e o mouse não está em cima
+  function play() {
+    clearInterval(timer);
+    if (REDUCE || !galleryVisible || document.hidden || $("#gallery").matches(":hover, :focus-within")) { $("#gallery").classList.add("paused"); return; }
+    $("#gallery").classList.remove("paused");
+    restartBar();
+    timer = setInterval(() => { show(current + 1); restartBar(); }, SLIDE_MS);
+  }
+  // Reinicia a barrinha de progresso do ponto ativo
+  function restartBar() { const bar = dots[current].querySelector("span"); bar.style.animation = "none"; bar.offsetWidth; bar.style.animation = ""; }
+  dots.forEach(d => d.addEventListener("click", () => { show(+d.dataset.slide); play(); }));
+  $("#gallery").addEventListener("mouseenter", play);
+  $("#gallery").addEventListener("mouseleave", play);
+  document.addEventListener("visibilitychange", play);
+  new IntersectionObserver(([e]) => { galleryVisible = e.isIntersecting; play(); }, { threshold: .3 }).observe($("#gallery"));
+  show(0);
 
   /* ---------- Antes e depois ---------- */
   const compare = $("#compare"), range = compare.querySelector("input");
