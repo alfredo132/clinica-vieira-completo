@@ -2,7 +2,7 @@
 
 Site de demonstração da Clínica Vieira, clínica odontológica fictícia na Savassi, em Belo Horizonte.
 
-- `index.html`: página principal, com tratamentos (duração e número de consultas, com foto que troca ao rolar), antes e depois, três promessas da clínica com assinatura da fundadora, equipe, convênios, avaliações no formato do Google, endereço com galeria de fotos da clínica e agendamento que monta a mensagem e abre o WhatsApp
+- `index.html`: página principal, com tratamentos em mosaico de fotos (duração e número de consultas), antes e depois, três promessas da clínica com assinatura da fundadora, equipe, convênios, avaliações no formato do Google, endereço com galeria de fotos da clínica e agendamento que monta a mensagem e abre o WhatsApp
 - `equipe.html`: perfil de cada dentista, com CRO, formação, cursos e diplomas
 - `styles.css`: visual compartilhado pelas duas páginas
 
