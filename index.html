@@ -13,11 +13,16 @@
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 <link rel="stylesheet" href="styles.css">
 <script>
-// Tema de cores opcional: ?tema=salvia ou ?tema=champanhe (vale para as outras páginas na mesma aba; ?tema= volta ao original)
+// Tema de cores opcional: ?tema=salvia ou ?tema=champanhe. Os links entre as páginas levam o tema junto.
 (function () {
   var t = new URLSearchParams(location.search).get("tema");
-  try { if (t !== null) sessionStorage.setItem("tema", t); else t = sessionStorage.getItem("tema"); } catch (e) {}
-  if (t && /^[a-z]+$/.test(t)) document.write('<link rel="stylesheet" href="tema-' + t + '.css">');
+  if (!t || !/^[a-z]+$/.test(t)) return;
+  document.write('<link rel="stylesheet" href="tema-' + t + '.css">');
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href$=".html"], a[href*=".html#"]');
+    if (!a || a.origin !== location.origin) return;
+    var u = new URL(a.href); u.searchParams.set("tema", t); a.href = u.href;
+  });
 })();
 </script>
 </head>

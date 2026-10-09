@@ -22,4 +22,4 @@ Temas de cor (mesmo layout, só cores e fontes):
 - `?tema=salvia`: verde-sálvia e creme, títulos serifados (`tema-salvia.css`)
 - `?tema=champanhe`: preto, areia e detalhes dourados (`tema-champanhe.css`)
 
-O tema escolhido vale para as outras páginas na mesma aba. `?tema=` volta ao original.
+Os links entre as páginas levam o tema junto. Sem `?tema` aparece o original.
