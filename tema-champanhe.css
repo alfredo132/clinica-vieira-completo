@@ -1,0 +1,46 @@
+/* Tema Champanhe: preto, areia e detalhes dourados. Só troca cores e fontes; o layout é o de styles.css. */
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300..700&display=swap");
+
+:root {
+  --bg: #f5f1ea;
+  --paper: #fdfbf7;
+  --ink: #1b1815;
+  --ink-2: #48423b;
+  --muted: #7c7468;
+  --line: #e2dacd;
+  --accent: #1b1815;
+  --accent-ink: #f5f1ea;
+  --accent-soft: #efe6d6;
+  --gold: #a5803f;
+  --display: "Jost", system-ui, sans-serif;
+  --body: "Jost", system-ui, sans-serif;
+}
+
+body { font-weight: 400; }
+h1, h2, h3, .brand b, .google b, .tile b, .promises b, .plans li {
+  font-weight: 500; font-stretch: 100%; letter-spacing: -.025em;
+}
+.q h3 { font-weight: 600; letter-spacing: 0; }
+.person b { font-weight: 600; }
+.brand span { letter-spacing: .14em; text-transform: uppercase; font-size: 10px; }
+
+.btn-main:hover { background: #3a332c; }
+.link-arrow:hover, .pay-ask:hover { color: var(--gold); }
+:focus-visible { outline-color: var(--gold); }
+
+/* Dourado nos detalhes */
+.promises, .visit dl { border-top-color: var(--gold); }
+.google b { color: var(--gold); }
+.dots span { background: var(--gold); }
+.pay .plans, .pay .plans li { border-color: rgb(165 128 63 / .55); }
+.pay-ask i { color: var(--gold); }
+
+/* A capa tem fundo branco: puxa a foto para a areia do site */
+.hero-img img { filter: saturate(.82) contrast(.94) brightness(.97) sepia(.14); }
+.hero::after { background: linear-gradient(90deg, rgb(245 241 234 / .94) 0%, rgb(245 241 234 / .6) 34%, rgb(245 241 234 / 0) 54%); }
+.tile::after { background: linear-gradient(180deg, rgb(27 24 21 / 0) 40%, rgb(27 24 21 / .74) 100%); }
+dialog::backdrop { background: rgb(27 24 21 / .55); }
+
+@media (max-width: 767px) {
+  .hero::after { background: linear-gradient(180deg, rgb(245 241 234 / 0) 42%, var(--bg) 62%); }
+}

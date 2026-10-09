@@ -1,0 +1,36 @@
+/* Tema Sálvia: verde calmo, creme e títulos serifados. Só troca cores e fontes; o layout é o de styles.css. */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Manrope:wght@400..800&display=swap");
+
+:root {
+  --bg: #f3f0e9;
+  --paper: #fbf9f4;
+  --ink: #1d2621;
+  --ink-2: #3c4740;
+  --muted: #6c766e;
+  --line: #dcd8cc;
+  --accent: #3d6b57;
+  --accent-ink: #fbf9f4;
+  --accent-soft: #e1ebe3;
+  --display: "Fraunces", Georgia, serif;
+  --body: "Manrope", system-ui, sans-serif;
+}
+
+h1, h2, h3, .brand b, .google b, .tile b, .promises b, .plans li {
+  font-weight: 500; font-stretch: 100%; letter-spacing: -.01em;
+}
+.q h3 { font-family: var(--body); font-weight: 600; letter-spacing: 0; }
+.person b { font-weight: 600; }
+
+.btn-main:hover { background: #305645; }
+.link-arrow:hover { color: var(--accent); }
+
+/* A capa tem fundo branco: puxa a foto para o creme do site */
+.hero-img img { filter: saturate(.84) contrast(.93) brightness(.965) sepia(.16); }
+.hero::after { background: linear-gradient(90deg, rgb(243 240 233 / .94) 0%, rgb(243 240 233 / .6) 34%, rgb(243 240 233 / 0) 54%); }
+.tile::after { background: linear-gradient(180deg, rgb(20 32 26 / 0) 40%, rgb(20 32 26 / .74) 100%); }
+.plans, .plans li { border-color: rgb(251 249 244 / .3); }
+dialog::backdrop { background: rgb(20 32 26 / .55); }
+
+@media (max-width: 767px) {
+  .hero::after { background: linear-gradient(180deg, rgb(243 240 233 / 0) 42%, var(--bg) 62%); }
+}

@@ -79,6 +79,14 @@
     .end .btn { width: 100%; }
   }
 </style>
+<script>
+// Tema de cores opcional: ?tema=salvia ou ?tema=champanhe (vale para as outras páginas na mesma aba; ?tema= volta ao original)
+(function () {
+  var t = new URLSearchParams(location.search).get("tema");
+  try { if (t !== null) sessionStorage.setItem("tema", t); else t = sessionStorage.getItem("tema"); } catch (e) {}
+  if (t && /^[a-z]+$/.test(t)) document.write('<link rel="stylesheet" href="tema-' + t + '.css">');
+})();
+</script>
 </head>
 <body>
 <script>document.documentElement.classList.add("js")</script>

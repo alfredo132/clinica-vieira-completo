@@ -15,3 +15,11 @@ Para usar com uma clínica real:
 4. Avaliações: use só avaliações reais da própria clínica. Salve os prints na pasta `avaliacoes/` e troque cada item de `REVIEWS` por `{ img: "avaliacoes/print-1.png", name: "Nome de quem avaliou" }`.
 5. Antes e depois: use só casos reais da clínica, com autorização por escrito do paciente. Salve as fotos em `antes-depois/` e troque cada item de `CASES` por `{ before: "antes-depois/caso1-antes.jpg", after: "antes-depois/caso1-depois.jpg" }`.
 6. Em `equipe.html`, edite a lista `TEAM`. Para mostrar a foto de um diploma, salve a imagem na pasta `diplomas/` e preencha `img` no item.
+
+Temas de cor (mesmo layout, só cores e fontes):
+
+- original: azul e Archivo
+- `?tema=salvia`: verde-sálvia e creme, títulos serifados (`tema-salvia.css`)
+- `?tema=champanhe`: preto, areia e detalhes dourados (`tema-champanhe.css`)
+
+O tema escolhido vale para as outras páginas na mesma aba. `?tema=` volta ao original.
